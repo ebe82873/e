@@ -25,7 +25,7 @@ require_once '../php/requirements.php';
                 <label for="password" class="label">password</label>
                 <!-- using cookies to store the user's password if they where sent back from the login -->
                 <input type="password" name="password" placeholder="password1234" required minlength="8" value="<?= fetch_cookie(name: 'password', default: '') ?>">
-                <button type="button" onclick="togglePassword(['password'])">toggle password</button>
+                <button type="button" onclick="togglePasswords(['password'])">toggle password</button>
             </div>
 
             <!-- displays an error message if one is applicable -->

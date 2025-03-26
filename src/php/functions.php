@@ -46,3 +46,21 @@ function set_cookie(string $name, mixed $value, int $expire = 0, string $path = 
         path: $path,
     );
 }
+
+function delete_cookie(string $name): void {
+    set_cookie(name: $name, value: null, expire: -1);
+}
+
+function is_user_logged_in(): bool {
+    $user = fetch_cookie(name: 'user');
+    if (!$user) {
+        return false;
+    }
+
+    $connection = get_database_connection();
+
+    $query = "SELECT * from users WHERE email=\"" . $connection->escape_string($user['email']) ."\" and password=\"" . $connection->escape_string($user['hashed_password']) . "\";";
+
+    return $connection->query($query)->num_rows == 1;
+}
+
