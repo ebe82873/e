@@ -34,11 +34,11 @@ function get_nav_bar_links(): array {
 function get_user(): array | null {
     if (isset($_COOKIE['user'])) {
         return [
-            'name' => $_COOKIE['user']['username'] ?? 'your name',
-            'email' => $_COOKIE['user']['email'] ?? 'example@email.com',
-            'password' => $_COOKIE['user']['password'] ?? 'password',
-            'hashed_password' => $_COOKIE['user']['hashed_password'] ?? hash_password('password'),
-            'img_url' => $_COOKIE['user']['img_url'] ?? '../assets/images/placeholder.png',
+            'name' => fetch_cookie('user')['username'],
+            'email' => fetch_cookie('user')['email'],
+            'password' => fetch_cookie('user')['password'],
+            'hashed_password' => fetch_cookie('user')['hashed_password'],
+            'img_url' => fetch_cookie('user')['img_url'] ?? '../assets/images/placeholder-profile.jpg',
         ];
     }
     
@@ -76,7 +76,7 @@ function render_navbar(): string {
     // adds the profile of the user if applicable
     if (get_user() != null) {
         // create the parent link for the user
-        $navbar_lines[] = "<a class=\"account-icon\">";
+        $navbar_lines[] = "<a class=\"account-icon\" href=\"../(account)\">";
 
         // makes a link adds the user's profile picture
         $navbar_lines[] = "<img src=\"" . get_user()['img_url'] . "\" alt=\"profile picture\">";

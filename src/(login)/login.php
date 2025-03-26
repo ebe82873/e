@@ -26,7 +26,7 @@ function main(): void {
     // makes a connection
     $connection = get_database_connection();
 
-    $query = "SELECT * FROM users WHERE email=\"" . $connection->escape_string($_POST['email']) ."\" and email=\"". $connection->escape_string(hash_password(password: $_POST['password'])) . "\";";
+    $query = "SELECT * FROM users WHERE email=\"" . $connection->escape_string($_POST['email']) ."\" and password=\"". $connection->escape_string(hash_password(password: $_POST['password'])) . "\";";
 
     $result = $connection->query($query);
 
@@ -36,17 +36,33 @@ function main(): void {
         $result = $connection->query(query: $query);
 
         // if the email is correct but not password
-        if ($result->num_rows == 1) {
+        if ($result->num_rows == 0) {
             error_and_reroute(
-                error_message: 'incorrect password'
+               error_message: 'email not in use'
             );
         }
         // else
         error_and_reroute(
-           error_message: 'email not in use'
+            error_message: 'incorrect password'
         );
     }
 
+    $result = $result->fetch_assoc();
+
+    // inits the user assoc
+    $user = [];
+
+    $user['id'] = $result['ID'];
+    $user['email'] = $result['email'];
+    $user['username'] = $result['username'];
+    $user['password'] = $_POST['password'];
+    $user['hashed_password'] = $result['password'];
+    $user['img_url'] = $result['img_url'];
+    $user['created_at'] = $result['created_at'];
     
+    // sets the user to a cookie
+    set_cookie('user', $user);
+
+    header('location: ../(home)/');
 }
 main();

@@ -32,10 +32,10 @@ function fetch_cookie(string $name, bool $unset_value = false, mixed $default = 
     $tmp = $_COOKIE[$name] ?? json_encode(value: $default);
 
     if ($unset_value == true) {
-        unset($_COOKIE[$name]);
+       set_cookie(name: $name, value: $tmp, expire: time() - 1, path: '/');
     }
 
-    return json_decode(json: $tmp);
+    return json_decode(json: $tmp, associative: true);
 }
 
 function set_cookie(string $name, mixed $value, int $expire = 0, string $path = '/'): void {

@@ -17,14 +17,14 @@ require_once '../php/requirements.php';
             <div class="email">
                 <label for="email" class="label">email</label>
                 <!-- using cookies to hold the user's email if it is invalid and where sent back from the login -->
-                <input type="email" name="email" placeholder="john.smith@example.com" required value="<?= fetch_cookie(name: 'tmp_email', default: 'e@e') ?>">
+                <input type="email" name="email" placeholder="john.smith@example.com" required value="<?= fetch_cookie(name: 'email', default: '') ?>">
             </div>
 
             <!-- password element to hold the user's password input and the toggle password button -->
             <div class="password">
                 <label for="password" class="label">password</label>
                 <!-- using cookies to store the user's password if they where sent back from the login -->
-                <input type="password" name="password" placeholder="password1234" required minlength="8" value="<?= fetch_cookie(name: 'tmp_password', default: '12345678') ?>">
+                <input type="password" name="password" placeholder="password1234" required minlength="8" value="<?= fetch_cookie(name: 'password', default: '') ?>">
                 <button type="button" onclick="togglePassword(['password'])">toggle password</button>
             </div>
 

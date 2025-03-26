@@ -1,11 +1,12 @@
 CREATE TABLE users (
     ID int auto_increment primary key,
     username text not null,
-    email text not null,
+    email text not null unique,
     password text not null,
     created_at timestamp default current_timestamp,
     img_url text
 );
+
 
 CREATE TABLE bookings (
     ID int auto_increment primary key,
