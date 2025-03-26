@@ -21,6 +21,30 @@ $tertiary: #427676;
 $white: #ecf1ed;
 $black: #140300;
 
+// colours for messages for the user
+$status-colours: (
+    success: green,
+    warning: orange,
+    error: red,
+);
+
+// values to calculate the multiplier
+$sizes: (
+    large: 3,
+    medium: 2,
+    small: 1,
+);
+
+// makes a few utility classes, medium-error, large-warning, and small-success 
+@each $status, $colour in $status-colours {
+    @each $size, $value in $sizes {
+        .#{$size}-#{$status} {
+            color: $colour;
+            font-size: 1rem * multiplier($value);
+        }
+    }
+}
+
 // styles for the whole document
 :root {
     // sets the document to have dynamic light dark mode based on the clients device settings

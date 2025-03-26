@@ -17,29 +17,29 @@ $user = fetch_cookie('user');
         <form action="update_account_info.php" class="account-form" method="post">
             <div class="email-input">
                 <label for="email" class="label">email</label>
-                <input type="email" name="email" id="email" required value="<?= $user['email'] ?>">
+                <input type="email" name="email" id="email" required value="<?= fetch_cookie(name: 'tmp_email', unset_value: true) ?? $user['email'] ?>">
             </div>
 
             <div class="name-input">
                 <label for="username" class="label">name</label>
-                <input type="username" name="username" id="username" required value="<?= $user['username'] ?>">
+                <input type="username" name="username" id="username" required value="<?= fetch_cookie(name: 'tmp_username', unset_value: true) ?? $user['username'] ?>">
             </div>
             
             <div class="password-input">
                 <label for="password" class="label">password</label>
-                <input type="password" name="password" id="password" required value="<?= $user['password'] ?>">
+                <input type="password" name="password" id="password" required value="<?= fetch_cookie(name: 'tmp_password', unset_value: true) ?? $user['password'] ?>">
             </div>
 
             <div class="password-conf-input">
                 <label for="password-conf" class="label">confirm password</label>
-                <input type="password-conf" name="password-conf" id="password-conf" required value="<?= $user['password'] ?>">
+                <input type="password-conf" name="password-conf" id="password-conf" required value="<?= fetch_cookie(name: 'tmp_password_conf', unset_value: true) ?? $user['password'] ?>">
             </div>
 
             <button type="button" onclick="togglePasswords(['password', 'password-conf'])">toggle password</button>
 
             <div class="img-url-input">
                 <label for="img-url">profile picture</label>
-                <input type="file" name="img-url" id="img-url" value="upload" placeholder="../assets/images/placeholder-profile.jpg" value="<?= $user['img_url'] ?>">
+                <input type="file" name="img-url" id="img-url" value="upload" placeholder="../assets/images/placeholder-profile.jpg" value="<?= fetch_cookie(name: 'tmp_img_url', unset_value: true) ?? $user['img_url'] ?>">
             </div>
 
             
@@ -59,7 +59,7 @@ $user = fetch_cookie('user');
             </div>
         </form>
 
-        <div class="popup" id="delete-account" hidden>
+        <div class="popup" id="delete-account">
             <h1>Delete account</h1>
             <button type="button" class="close-button" onclick="togglePopup('delete-account');">X</button>
             <a href="delete_account.php" class="delete-button">Delete account</a>

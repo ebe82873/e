@@ -29,24 +29,6 @@ function get_nav_bar_links(): array {
 }
 
 /*
- * retrieves the user or null from cookies
- **/
-function get_user(): array | null {
-    if (isset($_COOKIE['user'])) {
-        return [
-            'name' => fetch_cookie('user')['username'],
-            'email' => fetch_cookie('user')['email'],
-            'password' => fetch_cookie('user')['password'],
-            'hashed_password' => fetch_cookie('user')['hashed_password'],
-            'img_url' => fetch_cookie('user')['img_url'] ?? '../assets/images/placeholder-profile.jpg',
-        ];
-    }
-    
-    // else
-    return null;
-}
-
-/*
  * returns a string of the navbar in HTML, to be put into a tag.
  * ```php
  * <?= render_navbar ?>
@@ -60,7 +42,7 @@ function render_navbar(): string {
     $navbar_lines[] = "<nav class=\"navbar\">";
 
     // adds the logo element to the tag
-    $navbar_lines[] = "<img class=\"logo\" src=\"" . get_rolsa_logo()['src'] . "\" alt=\"" . get_rolsa_logo()['alt'] . "\">";
+    // $navbar_lines[] = "<img class=\"logo\" src=\"" . get_rolsa_logo()['src'] . "\" alt=\"" . get_rolsa_logo()['alt'] . "\">";
 
     // creates the parent tag for the links
     $navbar_lines[] = "<ul class=\"links\">";
@@ -73,16 +55,18 @@ function render_navbar(): string {
     // closes the links tag
     $navbar_lines[] = "</ul>";
 
+    $user = fetch_cookie('user');
+    
     // adds the profile of the user if applicable
-    if (get_user() != null) {
+    if ($user != null) {
         // create the parent link for the user
         $navbar_lines[] = "<a class=\"account-icon\" href=\"../(account)\">";
 
         // makes a link adds the user's profile picture
-        $navbar_lines[] = "<img src=\"" . get_user()['img_url'] . "\" alt=\"profile picture\">";
+        $navbar_lines[] = "<img src=\"" . $user['img_url'] . "\" alt=\"profile picture\">";
 
         // adds their username
-        $navbar_lines[] = "<p class=\"username\">" . get_user()['name'] . "</p>";
+        $navbar_lines[] = "<p class=\"username\">" . $user['username'] . "</p>";
 
         // closes the parent tag for the user
         $navbar_lines[] = "</a>";
@@ -126,4 +110,16 @@ function render_header(string $title): string {
 
     // returns the header lines joined on `\n`
     return implode(separator:"\n", array: $header_lines);
+}
+
+/*
+ * returns a rendered HTML string for the inside of the footer tag
+ * ```php
+ *      <?= render_footer() ?>
+ * </body>
+ **/
+function render_footer(string $footer): string {
+    $footer_lines = [];
+
+    return implode(separator: '\n', array: $footer_lines);
 }
