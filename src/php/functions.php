@@ -40,15 +40,15 @@ function fetch_cookie(string $name, bool $unset_value = false, mixed $default = 
 
 function set_cookie(string $name, mixed $value, int $expire = 0, string $path = '/'): void {
     setcookie(
-        name: $name,
-        value: json_encode(value: $value),
-        expires_or_options: $expire,
-        path: $path,
+        $name,
+        json_encode(value: $value),
+        $expire,
+        $path,
     );
 }
 
 function delete_cookie(string $name): void {
-    set_cookie(name: $name, value: null, expire: -1);
+    set_cookie(name: $name, value: null, expire: time() -1);
 }
 
 function is_user_logged_in(): bool {

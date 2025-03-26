@@ -13,22 +13,22 @@ require_once '../php/requirements.php';
         <form action="register.php" class="register-form" method="post">
             <div class="email-input">
                 <label for="email" class="label">email</label>
-                <input type="email" name="email" id="email" required value="<?= fetch_cookie(name: 'email', default: '') ?>">
+                <input type="email" name="email" id="email" required value="<?= fetch_cookie(name: 'email', default: '', unset_value: true) ?>">
             </div>
 
             <div class="name-input">
                 <label for="username" class="label">name</label>
-                <input type="username" name="username" id="username" required value="<?= fetch_cookie(name: 'username', default: '') ?>">
+                <input type="username" name="username" id="username" required value="<?= fetch_cookie(name: 'username', default: '', unset_value: true) ?>">
             </div>
             
             <div class="password-input">
                 <label for="password" class="label">password</label>
-                <input type="password" name="password" id="password" required value="<?= fetch_cookie(name: 'password', default: '') ?>">
+                <input type="password" name="password" id="password" required value="<?= fetch_cookie(name: 'password', default: '', unset_value: true) ?>">
             </div>
 
             <div class="password-conf-input">
                 <label for="password-conf" class="label">confirm password</label>
-                <input type="password-conf" name="password-conf" id="password-conf" required value="<?= fetch_cookie(name: 'password-conf', default: '') ?>">
+                <input type="password-conf" name="password-conf" id="password-conf" required value="<?= fetch_cookie(name: 'password-conf', default: '', unset_value: true) ?>">
             </div>
 
             <div class="img-url-input">
