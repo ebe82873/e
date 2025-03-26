@@ -26,6 +26,7 @@ function error_and_reroute(string $error_message, string $path = './', bool $deb
     } 
     set_cookie(name: 'tmp_error_message', value: $error_message);
     header(header: 'location: ' . $path);
+    exit;
 }
 
 function fetch_cookie(string $name, bool $unset_value = false, mixed $default = null): mixed {
