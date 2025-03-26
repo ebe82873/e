@@ -47,7 +47,7 @@ function get_user(): array | null {
 }
 
 /*
- * returns a string of the navbar in html, to be put into a tag.
+ * returns a string of the navbar in HTML, to be put into a tag.
  * ```php
  * <?= render_navbar ?>
  * ```
@@ -89,7 +89,7 @@ function render_navbar(): string {
     }
     // if the user is not logged in then it shows the log in button
     else {
-        $navbar_lines[] = "<a class=\"login-button\" href=\"../(account)/\">Login</a>";
+        $navbar_lines[] = "<a class=\"login-button\" href=\"../(login)/\">Login</a>";
     }
 
     // closes the parent tag for the nav bar
@@ -97,4 +97,33 @@ function render_navbar(): string {
 
     // renders the navbar and joins it on `\n`
     return implode(separator: "\n", array: $navbar_lines);
+}
+
+/*
+ * returns a rendered HTML string for the inside of the header tag
+ * ```php
+ * <head>
+ *      <? render_header('page name') ?>
+ * </head>
+ **/
+function render_header(string $title): string {
+    $header_lines = [];
+
+    // adds the encoding
+    $header_lines[] = "<meta charset=\"UTF-8\">";
+
+    // sets the start size of the website to fill the window
+    $header_lines[] = "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
+
+    // adds the title for the page
+    $header_lines[] = "<title>" . $title . "</title>";
+
+    // links to the css
+    // $header_lines[] = "<link rel=\"stylesheet\" href=\"../css/styles.css\">";
+
+    // links the favicon
+    $header_lines[] = "<link rel=\"shortcut icon\" href=\"../assets/images/favicon.svg\" type=\"image/x-icon\">";
+
+    // returns the header lines joined on `\n`
+    return implode(separator:"\n", array: $header_lines);
 }
