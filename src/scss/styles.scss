@@ -1,3 +1,121 @@
+@use 'sass:math';
+
+/*
+ * a function to calculate the size multiplier of an element
+ * ```scss
+ .text {
+     font-size: multiplier(2);
+ 
+     .child-element {
+         font-size: multiplier(1);
+     }
+ }
+ * */
+@function multiplier($exponent: 1) {
+    @return math.pow(1.6, $exponent);
+}; 
+
+$primary: #60b450;
+$secondary: #33642b;
+$tertiary: #427676;
+$white: #ecf1ed;
+$black: #140300;
+
+// styles for the whole document
 :root {
+    // sets the document to have dynamic light dark mode based on the clients device settings
+    // to use, place two colours in the function light-dark(light-mode-colour, dark-mode-colour)
     color-scheme: light dark;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    
+    // hides content off screen
+    overflow: hidden;
+}
+
+// styles for the navbar
+.navbar {
+    // for the amount of white space
+    $space: 0.4rem;
+
+    // the width of the navbar
+    $width: 90%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    
+    // keeps the navbar at the top of the screen
+    position: fixed;
+    top: 0;
+    
+    // centers the navbar at the top
+    left: (100% - $width) * 0.5;
+
+    width: $width;
+
+    gap: $space * multiplier(2);
+
+    padding: $space * multiplier(1);
+
+    // height: $space * math.pow(1.6, 3);
+
+    background-color: $secondary;
+
+    border: none;
+    border-radius: $space * multiplier(2);
+
+    .logo,
+    img {
+        max-height: $width;
+    }
+
+    .links {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        gap: $space * multiplier(1);
+        
+        a {
+            color: $white;
+            text-transform: uppercase;
+            text-decoration: none;
+    
+            // using these 3 classes to have friendly mobile, desktop, and keyboard navigation styles
+            &:hover,
+            &:active,
+            &:focus-visible {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .login-button {
+        border: none;
+        border-radius: $space;
+        padding: $space;
+
+    
+    }
+}
+
+main.home {
+    .title{
+        background-color: $primary;
+
+        .title-text {
+            color: $white;
+            text-decoration: underline;
+        }
+
+        .splash-text {
+            color: $white;
+            font-family: fantasy;
+        }
+    }
 }

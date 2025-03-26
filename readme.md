@@ -1,5 +1,5 @@
-# To compile scource code
-## Prerequists
+# To compile source code
+## Prerequires
 ```powershell
 npm install
 ```
@@ -7,7 +7,7 @@ npm install
 ## SCSS
 ```powershell
 cd src
-npx sass --watch scss:css
+npx sass scss:css --watch
 ```
 
 ## TS
@@ -15,3 +15,9 @@ npx sass --watch scss:css
 cd src\ts
 npx tsc scripts.ts --watch --outDir ..\js
 ```
+
+## todo
+make styling
+
+# Asset log
+* 
