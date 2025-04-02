@@ -1,4 +1,9 @@
+/*
+ * toggles the state of the popup by the id given
+ * this works by changing the class of the popup
+ **/
 function togglePopup(id: string): void {
+	// selects the element from the DOM by the given id
 	const popup: HTMLElement | null = document.getElementById(id);
 	
 	// if a void id pointer
@@ -7,5 +12,6 @@ function togglePopup(id: string): void {
 		return;
 	}
 
+	// toggle the class for hidden
 	popup.classList.toggle('hidden');
 }

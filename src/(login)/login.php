@@ -11,7 +11,6 @@ function main(): void {
         if (!isset($_POST['email'])) {
                 error_and_reroute(
                         error_message: 'no email provided',
-                        // debug: true,
                 );
         }
 
@@ -19,11 +18,9 @@ function main(): void {
         if (!isset($_POST['password'])) {
                 error_and_reroute(
                         error_message: 'no password provided',
-                        // debug: true,
                 );
         }
 
-        // makes a connection
         $connection = get_database_connection();
 
         $query = "SELECT * FROM users WHERE email=\"" . $connection->escape_string($_POST['email']) ."\" and password=\"". $connection->escape_string(hash_password(password: $_POST['password'])) . "\";";
@@ -61,8 +58,9 @@ function main(): void {
         $user['created_at'] = $result['created_at'];
         
         // sets the user to a cookie
-        set_cookie('user', $user);
+        set_cookie(name: 'user', value: $user);
 
+        // sends the user to home
         header('location: ../(home)/');
 }
 main();

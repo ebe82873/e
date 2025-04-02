@@ -1,19 +1,37 @@
-const MainElement = document.body.getElementsByTagName('section')[0];
+// this is the main element for the calculator to sit in in the DOM
+const mainElement: HTMLDivElement = document.body.getElementsByTagName('section')[0] as HTMLDivElement;
+
+// this is the average carbon footprint form the DOM 
 const averageCarbonFootprint: number = parseFloat(document.getElementById('avg-cbn-ftp')?.innerText ?? '8.2');
 
-if (!MainElement) {
-    throw new Error("main tag not found");
+// if the main tag is not defined in the DOM
+if (mainElement == null) {
+    // creates a new main element
+    const mainElement: HTMLDivElement = document.createElement('section') as HTMLDivElement;
+
+    // gives it a correct class
+    mainElement.classList.add('calculation');
+
+    // adds it to body
+    document.body.appendChild(mainElement);
 }
 
+// a type for s question
 interface question {
     question: string,
     answers: answers,
 }
 
+// a type for an answer to a question
 interface answers {
     [answer: string]: number,
 }
 
+/*
+ * Calculator Body
+ * this is a body used for the calculator class with built in DOM manipulation
+ * this holds some internal shorthand for certain elements
+ **/
 class CalculatorBody {
     private body: HTMLElement;
 
@@ -24,11 +42,12 @@ class CalculatorBody {
     
     private answersContainer: HTMLDivElement;
 
+    // creates and adds all the calculator components to the DOM
     constructor() {
         this.body = document.createElement('div');
         this.body.classList.add('calculator');
         
-        MainElement.appendChild(this.body);
+        mainElement.appendChild(this.body);
     
         this.questionContainer = document.createElement('div');
         this.questionContainer.classList.add('question');
@@ -51,6 +70,16 @@ class CalculatorBody {
         this.body.appendChild(this.answersContainer);
     }
 
+    /*
+     * takes in the args of:
+     *      question: question
+     *          for the question to ask the user
+     *      question number: number
+     *          this is current question number
+     *      number of question: number
+     *          this is the total number of question the user will or has been asked
+     * this method will return a promise for the number the answer their choice corresponds to
+     **/
     public async getUserInputFromQuestion(question: question, questionNumber: number, numberOfQuestions: number): Promise<number> {
         // empties out the answers
         this.answersContainer.innerHTML = '';
@@ -76,6 +105,16 @@ class CalculatorBody {
        });
     }
     
+    /*
+     * takes in arguments for:
+     *      question: question
+     *          the question to ask the user
+     *      question number: number
+     *          the current number of question
+     *      number of questions: number
+     *          the number of questions the user has or will be asked
+     * this displays the question in the question bar at the top of the calculator
+     */
     private displayQuestion(question: question, questionNumber: number, numberOfQuestions: number): void {
         this.questionTitle.innerText = question.question.toString();
 
@@ -85,6 +124,12 @@ class CalculatorBody {
         this.questionPercentMarker.innerText = Math.trunc(((questionNumber - 1)  / numberOfQuestions) * 100).toString();
     }
 
+    /*
+     * takes argument for:
+     *      total: number
+     *          the carbon footprint score the user got in the end
+     * this outputs the user's final score the page for them to see along with the average score
+     **/
     public displayScore(total: number): void {
         // clears the body
         this.body.innerHTML = '';
@@ -92,7 +137,7 @@ class CalculatorBody {
         const resultsTitle: HTMLHeadingElement = document.createElement('h2');
         resultsTitle.classList.add('title');
         resultsTitle.innerText = 'Results are in.';
-        MainElement.insertBefore(resultsTitle, this.body);
+        mainElement.insertBefore(resultsTitle, this.body);
         
         const userScore: HTMLDivElement = document.createElement('div');
         userScore.classList.add('result');
@@ -107,7 +152,7 @@ class CalculatorBody {
 
         const buttonsContainer: HTMLDivElement = document.createElement('div');
         buttonsContainer.classList.add('buttons');
-        MainElement.appendChild(buttonsContainer);
+        mainElement.appendChild(buttonsContainer);
 
         const reCalcButton: HTMLButtonElement = document.createElement('button');
         reCalcButton.type = 'button';
@@ -129,6 +174,9 @@ class CalculatorBody {
     }
 }
 
+/*
+ * a class to calculate the user's carbon footprint
+ **/
 class Calculator {
     // add more questions as needed
     private questions: Array<question> = [
@@ -163,16 +211,23 @@ class Calculator {
         this.total = 0;
     }
 
+    /*
+     * shows all the questions in turn to the user and adds their returned value to the score
+     **/
     public async startQuestions(): Promise<void> {
+        // loops over the questions
         for (let i = 0; i < this.questions.length; i++) {
             const QUESTION = this.questions[i];
 
+            // gets the user input
             const userInput: number = await this.body.getUserInputFromQuestion(QUESTION, i+1, this.questions.length);
-            console.log(`user input: ${userInput}`);
+
+            // updates the total
             this.total += userInput;
         }
     }
 
+    // displays the score
     public displayScore(): void {
         this.body.displayScore(Number.parseFloat(this.total.toPrecision(2)));
     }

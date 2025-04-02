@@ -3,14 +3,15 @@
 <?php
 require '../php/requirements.php';
 
+// checks the user is logged in
 if (!is_user_logged_in()) {
-    error_and_reroute('please log in to see and make consultations', '../(login)/');
+    error_and_reroute(error_message: 'please log in to see and make consultations', path: '../(login)/');
 }
 
-$user = fetch_cookie('user');
+$user = fetch_cookie(name: 'user');
 
 /*
- * gets all the bookings the user has
+ * gets all the bookings the user has from the bookings table
  **/
 function get_users_bookings(int $user_id): mixed {
     $connection = get_database_connection();
@@ -29,14 +30,15 @@ function get_users_bookings(int $user_id): mixed {
     <main class="consolations">
         <section class="bookings">
             <?php
-            $bookings = get_users_bookings($user['id']);
+            $bookings = get_users_bookings(user_id: $user['id']);
 
-            if (!$bookings): ?>
+            if (!$bookings): // checks the user has any bookings ?>
                 <p class="text">No bookings found</p>
             <?php else: ?>
-                <?php foreach ($bookings as $booking): ?>
+                <?php foreach ($bookings as $booking): // loops over the users bookings ?>
                     <div class="booking">
                         <div class="options">
+                            <!-- for each sub-element gets added if the option is selected in the booking -->
                             <?php if ($booking['solar']): ?>
                                 <span>solar</span>
                             <?php endif; if ($booking['smart_home']): ?>
@@ -48,11 +50,13 @@ function get_users_bookings(int $user_id): mixed {
 
                         <p class="date"><?= $booking['date'] ?></p>
 
+                        <!-- makes a delete button for the booking specific to the booking -->
                         <button class="delete-button" onclick="window.location.href = 'delete_booking.php?id=<?= $booking['ID'] ?>';">Delete</button>
                     </div> 
                 <?php endforeach; ?>
             <?php endif ?>
 
+            <!-- makes the book a new button -->
             <button class="primary-button" style="width: 20rem" onclick="window.location.href = '../(book)/';">Book A Consultation</button>
         </section>
     </main>

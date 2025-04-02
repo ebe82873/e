@@ -18,7 +18,10 @@ require_once '../php/requirements.php';
                 </section>
 
                 <div class="news">
-                        <!-- placeholder text and items -->
+                        <!--
+                                * placeholder text and items
+                                * add more in future development
+                        -->
                         <article class="article">
                                 <h2 class="title">Lorem ipsum dolor sit.</h2>
                                 <p class="content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis vero beatae fuga explicabo, voluptas cupiditate laboriosam ab molestiae sapiente, cumque, reiciendis tempore sit expedita ipsam tenetur optio obcaecati laudantium facere unde qui at? Tempore, commodi. Deserunt veritatis vitae recusandae dolores!</p>
@@ -81,7 +84,5 @@ require_once '../php/requirements.php';
                         </article>
                 </div>  
         </main>
-
-        <script src="../js/scripts.js"></script>
 </body>
 </html>

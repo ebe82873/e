@@ -17,7 +17,7 @@ npx tsc scripts.ts --watch --outDir ..\js
 ```
 
 ## todo
-* documentation of calculation and onwards
+* documentation of password_button.ts and styles.scss
 * do test log of site
 
 # Asset log

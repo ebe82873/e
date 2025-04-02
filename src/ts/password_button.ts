@@ -95,4 +95,5 @@ class PasswordButton {
 	}
 }
 
+// creates an instance of a password button
 const pswBtn = new PasswordButton('toggle-password-button');
