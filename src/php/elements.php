@@ -50,15 +50,13 @@ function render_navbar(): string {
 
 	// adds each link inturn
 	foreach ( get_nav_bar_links() as $link_name => $path) {
-		$navbar_lines[] = "<a href=\"" . $path . "\" title=\"" . strtolower($link_name) . "\">" . $link_name . "</a>";
+		$navbar_lines[] = "<a href=\"" . $path . "\" title=\"" . strtolower(string: $link_name) . "\">" . $link_name . "</a>";
 	}
-	
-	$navbar_lines[] = "<a href=\"../(test)/\">test</a>";
 	
 	// closes the links tag
 	$navbar_lines[] = "</ul>";
 
-	$user = fetch_cookie('user');
+	$user = fetch_cookie(name: 'user');
 	
 	// adds the profile of the user if applicable
 	if ($user != null) {
