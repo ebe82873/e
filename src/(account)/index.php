@@ -55,16 +55,9 @@ $user = fetch_cookie('user');
                                 <div class="secondary-button">
                                         <a href="logout.php">logout</a>
                                 </div>
-                                <button type="button" class="delete-button" onclick="togglePopup('delete-account')">Delete account</button>
+                                <button type="button" class="delete-button" onclick="window.location.href = 'delete_account.php';">Delete account</button>
                         </div>
                 </form>
-
-                <div class="popup" id="delete-account">
-                        <h1>Delete account</h1>
-                        <button type="button" class="close-button" onclick="togglePopup('delete-account');">X</button>
-                        <a href="delete_account.php" class="delete-button">Delete account</a>
-                        <button type="button" class="secondary-button" onclick="togglePopup('delete-account');">cancel</button>
-                </div>
         </main>
 
         <script src="../js/scripts.js"></script>

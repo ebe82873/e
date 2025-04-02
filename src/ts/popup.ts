@@ -3,13 +3,9 @@ function togglePopup(id: string): void {
 	
 	// if a void id pointer
 	if (!popup) {
+		console.error(`id: ${id} is not a valid id`);
 		return;
 	}
-	
-	// if it is not a popup
-	if (popup.classList.contains('popup')) {
-		return;
-	}
-	
-	popup.hidden = !popup.hidden;
+
+	popup.classList.toggle('hidden');
 }

@@ -17,7 +17,7 @@ require_once '../php/requirements.php';
                     <label class="label" for="solar-panel">solar panel</label>
                     <input type="checkbox" name="solar-panel" id="solar-panel" <?php if (fetch_cookie('tmp_solar-panel', unset_value: true)) { echo 'checked'; } ?>>
 
-                    <label class="label" for="ev-charging">ev charging</label>
+                    <label for="ev-charging">EV Charing</label>
                     <input type="checkbox" name="ev-charging" id="ev-charging" value="<?php if (fetch_cookie('tmp_ev-charging', unset_value: true)) { echo 'checked'; } ?>">
 
                     <label class="label" for="smart-home">smart home</label>

@@ -15,7 +15,7 @@ CREATE TABLE bookings (
         ev_charger boolean not null,
         smart_home boolean not null,
         date text not null,
-        name text not null,
+        address TEXT NOT NULL,
         foreign key (user_id) references users(ID)
 );
 

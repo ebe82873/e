@@ -52,7 +52,9 @@ function render_navbar(): string {
 	foreach ( get_nav_bar_links() as $link_name => $path) {
 		$navbar_lines[] = "<a href=\"" . $path . "\" title=\"" . strtolower($link_name) . "\">" . $link_name . "</a>";
 	}
-
+	
+	$navbar_lines[] = "<a href=\"../(test)/\">test</a>";
+	
 	// closes the links tag
 	$navbar_lines[] = "</ul>";
 
@@ -62,10 +64,10 @@ function render_navbar(): string {
 	if ($user != null) {
 		// create the parent link for the user
 		$navbar_lines[] = "<a class=\"account-icon\" href=\"../(account)\" title=\"account settings\">";
-
+		
 		// makes a link adds the user's profile picture
 		$navbar_lines[] = "<img src=\"" . $user['img_url'] . "\" alt=\"profile picture\">";
-
+		
 		// adds their username
 		$navbar_lines[] = "<p class=\"username\">" . $user['username'] . "</p>";
 
@@ -75,10 +77,10 @@ function render_navbar(): string {
 	// if the user is not logged in then it shows the log in button
 	else {
 		// opens a parent tag to style the login button
-		$navbar_lines[] = "<div class=\"login-button\" title=\"login\">";
+		$navbar_lines[] = "<div class=\"login-button\" onclick=\"window.location.href = '../(login)/'\" title=\"login\">";
 		
 		// a link for the user to login
-		$navbar_lines[] = "<a class=\"login-link\" href=\"../(login)/\">Login</a>";
+		$navbar_lines[] = "<a class=\"login-link\">Login</a>";
 
 		// closes the parent tag
 		$navbar_lines[] = "</div>";

@@ -75,12 +75,6 @@ $sizes: (
 	&:not(:active) {
 		animation-name: none;
 	}
-
-	@keyframes scale {
-		to {
-			scale: 0.6;
-		}
-	}
 }
 
 /// #endregion mixins
@@ -104,6 +98,12 @@ $sizes: (
 	to {
 		opacity: 1;
 		filter: none;
+	}
+}
+
+@keyframes scale {
+	to {
+		scale: 0.6;
 	}
 }
 
@@ -186,6 +186,28 @@ form {
 // * {
 // border: red solid 1px;
 // }
+
+/* styles for popups */
+.popup {
+	position: absolute;
+
+	top: 50%;
+	left: 50%;
+
+	/* takes up 80% of the screen */
+	width: 80vw;
+	height: 80dvh;
+	
+	transform: translate(-50%, -50%);
+
+	background-color: $tertiary;
+
+	border-radius: 2rem;
+}
+
+.hidden {
+	display: none;
+}
 
 /* styles for the navbar */
 .navbar {
@@ -423,6 +445,47 @@ main.consolations {
 				gap: 1rem;
 			}
 		}
+
+	}
+}
+
+main.delete-booking {
+	$text-size: 3rem;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	width: 100vw;
+	height: 100dvh;
+
+	gap: 1rem;
+
+	.title {
+		color: $white;
+		background-color: transparent;
+		font-size: $text-size * multiplier(1);
+
+		/* set all letters of the sentence to lower case */
+		text-transform: lowercase;
+		
+		/* makes the first letter of the sentence upper case */
+		&::first-letter {
+			text-transform: uppercase;
+		}
+	}
+
+	.sub-text {
+		color: $white;
+		font-size: $text-size * multiplier(0);
+	}
+
+
+	button {
+		width: $text-size * multiplier(0) * 15;
+		height: $text-size * multiplier(0);
+		font-weight: $text-size * multiplier(0);
 	}
 }
 
@@ -441,31 +504,6 @@ main.book {
 }
 
 main.calculation {
-	// <div class="calculator">
-	// <div class="question">
-	// <h2 class="number">1
-	// </h2>
-	// <h2 class="title">what type of car do you drive?
-	// </h2>
-	// <h2 class="percent-marker">0
-	// </h2>
-	// </div>
-	// <div class="answers">
-	// <button type="button" class="answer">small petrol car
-	// </button>
-	// <button type="button" class="answer">family petrol car
-	// </button>
-	// <button type="button" class="answer">diesel
-	// </button>
-	// <button type="button" class="answer">electric
-	// </button>
-	// <button type="button" class="answer">hydrogen
-	// </button>
-	// <button type="button" class="answer">N/A
-	// </button>
-	// </div>
-	// </div>
-
 	padding: 0.5rem;
 	display: flex;
 	justify-content: center;

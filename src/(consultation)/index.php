@@ -48,24 +48,13 @@ function get_users_bookings(int $user_id): mixed {
 
                         <p class="date"><?= $booking['date'] ?></p>
 
-                        <button class="delete-button" onclick="togglePopup('delete-booking-<?= $booking['ID'] ?>');">Delete</button>
-                        <div id="delete-booking<?= $booking['ID'] ?>" class="popup" hidden>
-                                <button onclick="window.location.href='delete-booking.php?<?= $booking['ID'] ?>" class="delete-button">Delete booking</button>
-                                <button onclick="togglePopup('delete-booking<?= $booking['ID'] ?>" class="secondary-button">Cancel</button>
-                        </div>
-                    </div>
-
-                    <div hidden id="delete-booking-<?= $booking['ID'] ?>" class="popup">
-                        <button type="button" class="secondary-button" onclick="togglePopup('delete-booking-<?= $booking['ID'] ?>');">cancel</button>
-                        <button onclick="alert('window.location.href=`delete-booking.php?id=<?= $booking['ID'] ?>" class="delete-button">delete</button>
-                    </div>
+                        <button class="delete-button" onclick="window.location.href = 'delete_booking.php?id=<?= $booking['ID'] ?>';">Delete</button>
+                    </div> 
                 <?php endforeach; ?>
             <?php endif ?>
 
             <button class="primary-button" style="width: 20rem" onclick="window.location.href = '../(book)/';">Book A Consultation</button>
         </section>
     </main>
-
-    <script src="../js/popup.js"></script>
 </body>
 </html>

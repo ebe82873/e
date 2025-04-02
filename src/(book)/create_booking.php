@@ -13,7 +13,7 @@ function main(): void {
     $address_line_1 = $_POST['address-line-1'];
     $address_line_2 = $_POST['address-line-2'];
     $address_line_county = $_POST['address-line-county'];
-    $ip_address = $_POST['ip-address'];
+    $post_code = $_POST['post-code'];
 
     $solar_panel = ['on' => true, 'off' => false][$_POST['solar-panel'] ?? 'off'];
     $ev_charging = ['' => true, 'off' => false][$_POST['ev-charging'] ?? 'off'];
@@ -25,7 +25,7 @@ function main(): void {
     set_cookie('tmp_address-line-1', $address_line_1);
     set_cookie('tmp_address-line-2', $address_line_2);
     set_cookie('tmp_address-line-county', $address_line_county);
-    set_cookie('tmp_ip-address', $ip_address);
+    set_cookie('tmp_post-code', $post_code);
 
     set_cookie('tmp_solar-panel', $solar_panel);
     set_cookie('tmp_ev-charging', $ev_charging);
@@ -35,24 +35,21 @@ function main(): void {
     if (!$solar_panel && !$ev_charging && !$smart_home) {
         error_and_reroute('Please select at least one service');
     }
+    
+    if (!preg_match(pattern:'/([A-z]){}/i', subject: $address_line_county)) {
+        error_and_reroute(error_message: 'invalid county name');
+    }
 
-    $user = fetch_cookie('user');
+    // regex from gov.uk
+    if (!preg_match(pattern: '/([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})/', subject: $post_code)) {
+        error_and_reroute(error_message: 'invalid post code');
+    }
+
+    $user = fetch_cookie('user');   
     
     $connection = get_database_connection();
-
-//     CREATE TABLE bookings (
-//         ID int auto_increment primary key,
-//         user_id int not null,
-//         solar boolean not null,
-//         ev_charger boolean not null,
-//         smart_home boolean not null,
-//         date text not null,
-//         name text not null,
-//         foreign key (user_id) references users(ID)
-// );
-
     
-    $query = "INSERT INTO bookings (user_id, date, solar, ev_charger, smart_home) VALUES (\"" . $connection->escape_string($user['id']) . "\", \"" . $connection->escape_string($date) . "\", ";
+    $query = "INSERT INTO bookings (user_id, date, solar, ev_charger, smart_home, address) VALUES (\"" . $connection->escape_string($user['id']) . "\", \"" . $connection->escape_string($date) . "\", ";
 
     if ($solar_panel) {
         $query .= "true, ";
@@ -65,10 +62,21 @@ function main(): void {
         $query .= "false, ";
     }
     if ($smart_home) {
-        $query .= "true";
+        $query .= "true, ";
     } else {
-        $query .= "false";
+        $query .= "false, ";
     }
+
+    $query .= "\"" . $connection->escape_string($address_line_1);
+
+    if ($address_line_2) {
+        $query .= ", " . $connection->escape_string($address_line_2);
+    }
+    if ($address_line_county) {
+        $query .= ", ". $connection->escape_string($address_line_county);
+    }
+
+    $query .= ", " . $connection->escape_string($post_code) . "\""; 
 
     $query .= ");";
 
