@@ -7,6 +7,17 @@
 <body>
     <?= render_navbar(); ?>
 
+    <?php
+
+    $connection = get_database_connection();
+
+    $query = "SELECT AVG(tonnes) FROM carbon_footprints";
+
+    $result = round(num: $connection->query($query)->fetch_assoc()['AVG(tonnes)'], precision: 2);
+
+    ?>
+    <p id="avg-cbn-ftp" hidden><?= $result ?></p>
+
     <main class="calculation">
 
     </main>

@@ -1,4 +1,5 @@
-const MainElement = document.body.getElementsByTagName('main')[0];
+const MainElement = document.body.getElementsByTagName('section')[0];
+const averageCarbonFootprint: number = parseFloat(document.getElementById('avg-cbn-ftp')?.innerText ?? '8.2');
 
 if (!MainElement) {
     throw new Error("main tag not found");
@@ -25,7 +26,7 @@ class CalculatorBody {
 
     constructor() {
         this.body = document.createElement('div');
-        this.body.classList.add('Calculator');
+        this.body.classList.add('calculator');
         
         MainElement.appendChild(this.body);
     
@@ -88,14 +89,43 @@ class CalculatorBody {
         // clears the body
         this.body.innerHTML = '';
 
-        const UserScore: HTMLDivElement = document.createElement('div');
-        UserScore.classList.add('result');
-        UserScore.innerHTML = `<p>Your carbon footprint is:</p><br><p class="score">${total}</p>`;
+        const resultsTitle: HTMLHeadingElement = document.createElement('h2');
+        resultsTitle.classList.add('title');
+        resultsTitle.innerText = 'Results are in.';
+        MainElement.insertBefore(resultsTitle, this.body);
+        
+        const userScore: HTMLDivElement = document.createElement('div');
+        userScore.classList.add('result');
+        userScore.innerHTML = `<p>Your carbon footprint is:</p><p class="score">${total}</p>`;
+        this.body.appendChild(userScore)
 
-        const AverageScore: HTMLDivElement = document.createElement('div');
-        AverageScore.classList.add('result');
+        const averageScore: HTMLDivElement = document.createElement('div');
+        averageScore.classList.add('result');
         console.log(document.cookie);
-        AverageScore.innerHTML = `<p>Average carbon footprint is:</p><br><p class="score">${document.cookie}`
+        averageScore.innerHTML = `<p>Average carbon footprint is:</p><p class="score">${averageCarbonFootprint}`
+        this.body.appendChild(averageScore);
+
+        const buttonsContainer: HTMLDivElement = document.createElement('div');
+        buttonsContainer.classList.add('buttons');
+        MainElement.appendChild(buttonsContainer);
+
+        const reCalcButton: HTMLButtonElement = document.createElement('button');
+        reCalcButton.type = 'button';
+        reCalcButton.classList.add('secondary-button');
+        reCalcButton.addEventListener('click', () => {
+            window.location.href = './';
+        })
+        reCalcButton.innerText = 'Re-calculate'
+        buttonsContainer.appendChild(reCalcButton);
+
+        const saveButton: HTMLButtonElement = document.createElement('button');
+        saveButton.type = 'button';
+        saveButton.classList.add('primary-button');
+        saveButton.addEventListener('click', () => {
+            window.location.href = `save_score.php?score=${total}`;
+        });
+        saveButton.innerText = 'Do something about it';
+        buttonsContainer.appendChild(saveButton);
     }
 }
 
@@ -137,41 +167,23 @@ class Calculator {
         for (let i = 0; i < this.questions.length; i++) {
             const QUESTION = this.questions[i];
 
-            const USER_INPUT: number = await this.body.getUserInputFromQuestion(QUESTION, i+1, this.questions.length);
-            console.log(`user input: ${USER_INPUT}`);
+            const userInput: number = await this.body.getUserInputFromQuestion(QUESTION, i+1, this.questions.length);
+            console.log(`user input: ${userInput}`);
+            this.total += userInput;
         }
     }
 
     public displayScore(): void {
-        this.body.displayScore(this.total)
+        this.body.displayScore(Number.parseFloat(this.total.toPrecision(2)));
     }
-}
-
-function fetchCookies(): Object {
-    let cookies: Object = {};
-
-    for (const cookie of document.cookie.split(';')) {
-        const splitted = cookie.split('=');
-        const cookieName = splitted[0];
-        const value = splitted.splice(1).join('=');
-
-        cookies[cookieName] = value;
-    }
-    
-    return cookies;
-}
-
-function fetchCookie(name: string): string {
-    return fetchCookies()[name];
 }
 
 function main(): void {
     // inits the carbon footprint Calculator
-    // const calculator: Calculator = new Calculator();
-    // calculator.startQuestions().then( () => {
-    //     calculator.displayScore();
-    // });
-    console.log(fetchCookies());
+    const calculator: Calculator = new Calculator();
+    calculator.startQuestions().then( () => {
+        calculator.displayScore();
+    });
 }
 
 main();

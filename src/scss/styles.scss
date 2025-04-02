@@ -1,6 +1,11 @@
 @use "sass:math";
 @use "sass:color";
 
+/* for styles with similar syntax to css, see scss/styles.scss */
+
+/* imports the font for the title on the home screen */
+@import url('https://fonts.googleapis.com/css2?family=Birthstone&display=swap');
+
 /// a function to calculate the size multiplier of an element
 /// ```scss
 /// text {
@@ -78,9 +83,6 @@ $sizes: (
 }
 
 /// #endregion mixins
-
-/* imports the font for the title on the home screen */
-@import url('https://fonts.googleapis.com/css2?family=Birthstone&display=swap');
 
 // /* styles for the whole document */
 // :root {
@@ -504,83 +506,122 @@ main.book {
 }
 
 main.calculation {
-	padding: 0.5rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	.calculator {
+	*,
+	& {
+		padding: 0.5rem;
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 
-		border-radius: 3rem;
-		padding: 2rem;
+	width: 100vw;
 
-		gap: 2rem * multiplier(-1);
+	.calculation {
+		padding-top: 10rem;
 
-		width: 100%;
-
-		background-color: $secondary;
-		
-		.question {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-
-			padding: 2rem * multiplier(-2);
-
-			gap: 2rem * multiplier(0);
-
-			background-color: $tertiary;
-
-			width: 100%;
-
-			border-radius: 1rem;
-			
-			/* set all all text to be black */
-			* {
-				color: $black;
-			}
-
-			.number {
-				&::before {
-					content: 'No. ';
-				}
-			}
-
-			.title {
-				flex-grow: 1;
-
-				/* sets all letters to lowercase in the question */
-				text-transform: lowercase;
-
-				/* sets the first letter back to being uppercase to capitalise the sentence */
-				&::first-letter {
-					text-transform: uppercase;
-				}
-			}
-
-			.percent-marker {
-				&::after {
-					content: '%';
-				}
-			}
+		.title {
+			color: $black;
+			font-size: larger;
 		}
-
-		.answers {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			gap: 30%;
-
-			align-items: center;
-
-			.answer {
-				/* styles to make a button */
-				@include button(10rem, $black, $primary);
-				border-color: $primary;
-				margin: 1rem;
+		
+		.calculator {
+			&,
+			* {
+				flex-direction: column;
 			}
+
+			width: max-content;
+			
+			display: flex;
+			flex-direction: column;
+	
+			border-radius: 3rem;
+			padding: 2rem;
+	
+			gap: 2rem * multiplier(-1);
+	
+			width: 100%;
+	
+			background-color: $secondary;
+			
+			.question {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+	
+				padding: 2rem * multiplier(-2);
+	
+				gap: 2rem * multiplier(0);
+	
+				background-color: $tertiary;
+	
+				width: 100%;
+	
+				border-radius: 1rem;
+				
+				/* set all all text to be black */
+				* {
+					color: $black;
+				}
+	
+				.number {
+					font-family: monospace;
+
+					&::before {
+						content: 'No. ';
+					}
+				}
+	
+				.title {
+					flex-grow: 1;
+	
+					/* sets all letters to lowercase in the question */
+					text-transform: lowercase;
+	
+					/* sets the first letter back to being uppercase to capitalise the sentence */
+					&::first-letter {
+						text-transform: uppercase;
+					}
+				}
+	
+				.percent-marker {
+					&::after {
+						content: '%';
+					}
+				}
+			}
+	
+			.answers {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				gap: 30%;
+	
+				align-items: center;
+	
+				.answer {
+					/* styles to make a button */
+					@include button(10rem, $black, $primary);
+					border-color: $primary;
+					margin: 1rem;
+				}
+			}
+	
+			.result {
+				color: $white;
+				font-size: 150%;
+			}
+	
+			.score {
+				color: $white;
+				font-size: 120%;
+				margin-left: 4rem;
+			}
+		}	
+
+		.buttons {
+			gap: 2rem;
 		}
 	}
 }
