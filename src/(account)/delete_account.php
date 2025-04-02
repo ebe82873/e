@@ -7,10 +7,12 @@
 <?php
 
 function main(): void {
+        // checks if the user has already pressed to delete their account and wont be true when it is there first visit
         if (!isset($_GET['conf'])) {
                 return;
         }
 
+        // if the user is not logged in then there is no account to delete
         if (!is_user_logged_in()) {
                 error_and_reroute(error_message: 'must be logged in to delete your account', path: '../(login)/');
         }
@@ -19,6 +21,7 @@ function main(): void {
 
         $user = fetch_cookie(name: 'user');
 
+        // checks the user is who they say they are
         $query = "SELECT ID FROM users WHERE email=\"" . $user['email'] . "\" and password=\"" . $user['hashed_password'] . "\";";
 
         $user_id = $connection->query(query: $query)->fetch_assoc()['ID'];
@@ -27,6 +30,7 @@ function main(): void {
 
         $connection->query($query);
 
+        // send the user through logout
         header('location: logout.php');
 }
 

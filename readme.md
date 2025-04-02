@@ -17,7 +17,8 @@ npx tsc scripts.ts --watch --outDir ..\js
 ```
 
 ## todo
-make styling
+* documentation of calculation and onwards
+* do test log of site
 
 # Asset log
 * images
