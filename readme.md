@@ -20,4 +20,7 @@ npx tsc scripts.ts --watch --outDir ..\js
 make styling
 
 # Asset log
-* 
+* images
+        - placeholder-profile.jpg // a place holder
+        - favicon.svg // the favicon for the site
+        - logo.svg // the logo for the site, used in the nav bar
