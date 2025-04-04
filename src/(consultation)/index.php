@@ -48,17 +48,20 @@ function get_users_bookings(int $user_id): mixed {
                             <?php endif; ?> 
                         </div>
 
-                        <p class="date"><?= $booking['date'] ?></p>
+                        <!-- shows the date in standard formate -->
+                        <p class="date"><?= implode(separator: ' / ', array: array_reverse(array: explode(separator: '-', string: $booking['date']))) ?></p>
+
+                        <p class="location"><?= $booking['address'] ?></p>
 
                         <!-- makes a delete button for the booking specific to the booking -->
-                        <button class="delete-button" onclick="window.location.href = 'delete_booking.php?id=<?= $booking['ID'] ?>';">Delete</button>
+                        <button class="delete button" onclick="window.location.href = 'delete_booking.php?id=<?= $booking['ID'] ?>';">Delete</button>
                     </div> 
                 <?php endforeach; ?>
             <?php endif ?>
 
             <!-- makes the book a new button -->
-            <button class="primary-button" style="width: 20rem" onclick="window.location.href = '../(book)/';">Book A Consultation</button>
+            <button class="primary button" style="width: 20rem" onclick="window.location.href = '../(book)/';">Book A Consultation</button>
         </section>
     </main>
 </body>
-</html>
+</html> 

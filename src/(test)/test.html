@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>book consultation</title>
+<title>Your Consolations</title>
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/x-icon"></head>
 <body>
@@ -16,58 +16,31 @@
 <a href="../(calculation)/" title="calculation">calculation</a>
 </ul>
 <a class="account-icon" href="../(account)" title="account settings">
-<img src="" alt="profile picture">
-<p class="username">test</p>
+<img src="../assets/images/placeholder-profile.jpg" alt="profile picture">
+<p class="username capitalise">test</p>
 </a>
 </nav>
-    <main class="book">
-        <section class="create-booking">
-            <form action="create_booking.php" class="create-booking" method="post">
-                <!-- a container for the user to enter the options for their booking -->
-                <div class="system input-field">
-                    <label class="label" for="solar-panel">solar panel</label>
-                    <input type="checkbox" name="solar-panel" id="solar-panel" >
+    <main class="consolations">
+        <section class="bookings">
+                                                <div class="booking">
+                        <div class="options">
+                            <!-- for each sub-element gets added if the option is selected in the booking -->
+                                                            <span>ev charger</span>
+                             
+                        </div>
 
-                    <label for="ev-charging">EV Charing</label>
-                    <input type="checkbox" name="ev-charging" id="ev-charging" value="">
+                        <!-- shows the date in standard formate -->
+                        <p class="date">05 / 04 / 2025</p>
 
-                    <label class="label" for="smart-home">smart home</label>
-                    <input type="checkbox" name="smart-home" id="smart-home" value="">
-                </div>
+                        <p class="location">22, ip21 4ax</p>
 
-                <!-- a container for the user to enter a date -->
-                <div class="date input-field">
-                    <label class="label" for="date">date</label>
-                    <input type="date" name="date" id="date" required value="">
-                </div>
-
-                <!-- a container for the user to enter their email -->
-                <div class="email input-field">
-                    <label class="label" for="email">email</label>
-                    <!-- pre-loads the email with their won email or has nothing there-->
-                    <input type="email" name="email" id="email" value="test@email.com" required>
-                </div>
-
-                <!-- a container for the user to enter their address -->
-                <div class="address input-field">
-                    <label class="label" for="address-lines-1">House name or number</label>
-                    <input type="text" id="address-line-1" name="address-line-1" placeholder="64" required value="">
-                    
-                    <label class="label" for="address-lines-2">address line 2</label>
-                    <input type="text" id="address-line-2" name="address-line-2" placeholder="Norwich" value="">
-
-                    <label class="label" for="address-line-county">County</label>
-                    <input type="text" id="address-line-county" name="address-line-county" placeholder="Norfolk" value="">
-
-                    <label class="label" for="ip-address">IP address</label>
-                    <input type="text" id="ip-address" name="ip-address" placeholder="NR2 5BL" required value="">
-                </div>
-
-                <!-- displays an error message is one is applicable -->
-                
-                <input type="submit" class="primary button" value="Book">
-            </form>
+                        <!-- makes a delete button for the booking specific to the booking -->
+                        <button class="delete button" onclick="window.location.href = 'delete_booking.php?id=8';">Delete</button>
+                    </div> 
+                            
+            <!-- makes the book a new button -->
+            <button class="primary button" style="width: 20rem" onclick="window.location.href = '../(book)/';">Book A Consultation</button>
         </section>
     </main>
 </body>
-</html>
+</html> 

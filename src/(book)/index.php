@@ -4,7 +4,7 @@
 require_once '../php/requirements.php';
 ?>
 <head>
-    <?= render_header('book consultation') ?>
+    <?= render_header(title: 'book consultation') ?>
 </head>
 <body>
     <?= render_navbar() ?>
@@ -48,8 +48,8 @@ require_once '../php/requirements.php';
                     <label class="label" for="address-line-county">County</label>
                     <input type="text" id="address-line-county" name="address-line-county" placeholder="Norfolk" value="<?= fetch_cookie('tmp_address-line-county', unset_value: true) ?>">
 
-                    <label class="label" for="ip-address">IP address</label>
-                    <input type="text" id="ip-address" name="ip-address" placeholder="NR2 5BL" required value="<?= fetch_cookie('tmp_ip-address', unset_value: true) ?>">
+                    <label class="label" for="post-code">IP address</label>
+                    <input type="text" id="post-code" name="post-code" placeholder="NR2 5BL" required value="<?= fetch_cookie('tmp_post-code', unset_value: true) ?>">
                 </div>
 
                 <!-- displays an error message is one is applicable -->

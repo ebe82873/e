@@ -40,22 +40,26 @@ class CalculatorBody {
         this.body.classList.add('calculator');
         
         mainElement.appendChild(this.body);
-    
+
         this.questionContainer = document.createElement('div');
         this.questionContainer.classList.add('question');
         this.body.appendChild(this.questionContainer);
-
+    
+        const markerContainer = document.createElement('div');
+        markerContainer.classList.add('marker-container');
+        this.questionContainer.appendChild(markerContainer)
+        
         this.questionNumber = document.createElement('h2');
         this.questionNumber.classList.add('number');
-        this.questionContainer.appendChild(this.questionNumber)
-
-        this.questionTitle = document.createElement('h2');
-        this.questionTitle.classList.add('title')
-        this.questionContainer.appendChild(this.questionTitle);
+        markerContainer.appendChild(this.questionNumber)
         
         this.questionPercentMarker = document.createElement('h2');
         this.questionPercentMarker.classList.add('percent-marker');
-        this.questionContainer.appendChild(this.questionPercentMarker);
+        markerContainer.appendChild(this.questionPercentMarker);
+
+        this.questionTitle = document.createElement('h2');
+        this.questionTitle.className = 'title capitalise';
+        this.questionContainer.appendChild(this.questionTitle);
         
         this.answersContainer = document.createElement('div');
         this.answersContainer.classList.add('answers');
@@ -88,7 +92,7 @@ class CalculatorBody {
                 let button = document.createElement('button');
                 button.type = 'button';
                 button.innerText = answer;
-                button.classList.add('answer');
+                button.className = 'answer button';
                 button.addEventListener('click', () => {
                     resolve(value);
                 })
@@ -148,7 +152,7 @@ class CalculatorBody {
 
         const reCalcButton = document.createElement('button');
         reCalcButton.type = 'button';
-        reCalcButton.classList.add('secondary-button');
+        reCalcButton.className = 'secondary button';
         reCalcButton.addEventListener('click', () => {
             window.location.href = './';
         })
@@ -157,7 +161,7 @@ class CalculatorBody {
 
         const saveButton = document.createElement('button');
         saveButton.type = 'button';
-        saveButton.classList.add('primary-button');
+        saveButton.className = 'primary button';
         saveButton.addEventListener('click', () => {
             window.location.href = `save_score.php?score=${total}`;
         });
@@ -176,7 +180,7 @@ class Calculator {
             question: 'what type of car do you drive?',
             answers: {
                 'small petrol car': 1.2,
-                'family petrol car': 1.4,
+                '   petrol car': 1.4,
                 'diesel': 1.8,
                 'electric': 0.3,
                 'hydrogen': 0.2,

@@ -64,10 +64,10 @@ function render_navbar(): string {
 		$navbar_lines[] = "<a class=\"account-icon\" href=\"../(account)\" title=\"account settings\">";
 		
 		// makes a link adds the user's profile picture
-		$navbar_lines[] = "<img src=\"" . $user['img_url'] . "\" alt=\"profile picture\">";
+		$navbar_lines[] = "<img src=\"" . ($user['img_url'] ?? '../assets/images/placeholder-profile.jpg') . "\" alt=\"profile picture\">";
 		
 		// adds their username
-		$navbar_lines[] = "<p class=\"username\">" . $user['username'] . "</p>";
+		$navbar_lines[] = "<p class=\"username capitalise\">" . $user['username'] . "</p>";
 
 		// closes the parent tag for the user
 		$navbar_lines[] = "</a>";

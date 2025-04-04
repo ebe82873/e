@@ -15,7 +15,7 @@ function main(): void {
     $address_line_1 = $_POST['address-line-1'];
     $address_line_2 = $_POST['address-line-2'];
     $address_line_county = $_POST['address-line-county'];
-    $post_code = $_POST['post-code'];
+    $post_code = strtolower($_POST['post-code']);
     
     $solar_panel = ['on' => true, 'off' => false][$_POST['solar-panel'] ?? 'off'];
     $ev_charging = ['' => true, 'off' => false][$_POST['ev-charging'] ?? 'off'];
@@ -41,7 +41,7 @@ function main(): void {
     
     // checks the county is valid
     // in future to add a better system to catch just the 52 counties
-    if (!preg_match(pattern:'/([A-z]){}/i', subject: $address_line_county)) {
+    if (!preg_match(pattern:'/([A-z]){}/i', subject: $address_line_county) && $address_line_county) {
         error_and_reroute(error_message: 'invalid county name');
     }
 
