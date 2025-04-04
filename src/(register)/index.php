@@ -10,53 +10,53 @@ require_once '../php/requirements.php';
 	<?= render_navbar() ?>
 
 	<main class="register">
-		<form action="register.php" class="register-form" method="post">
-			<!-- a div for the user's email, with cached value pre-loaded if possible -->
-			<div class="email-input">
-				<label for="email" class="label">email</label>
-				<input type="email" name="email" id="email" required value="<?= fetch_cookie(name: 'tmp_email', default: '', unset_value: true) ?>">
-			</div>
-
-			<!-- a div for the user's name, with cached value pre-loaded if possible -->
-			<div class="name-input">
-				<label for="username" class="label">name</label>
-				<input type="username" name="username" id="username" required value="<?= fetch_cookie(name: 'tmp_username', default: '', unset_value: true) ?>">
-			</div>
-			
-			<!-- a div for the user's password, with cached value pre-loaded if possible -->
+		<section class="register">
+			<form action="register.php" class="register-form" method="post">
+				<!-- a div for the user's email, with cached value pre-loaded if possible -->
+				<div class="email-input">
+					<label for="email" class="label">email</label>
+					<input type="email" name="email" id="email" required value="<?= fetch_cookie(name: 'tmp_email', default: '', unset_value: true) ?>" placeholder="<?= get_placeholder_email(); ?>">
+				</div>
+				
+				<!-- a div for the user's name, with cached value pre-loaded if possible -->
+				<div class="name-input">
+					<label for="username" class="label">name</label>
+					<input type="username" name="username" id="username" required value="<?= fetch_cookie(name: 'tmp_username', default: '', unset_value: true) ?>" placeholder="<?= get_placeholder_username() ?>">
+				</div>
+				
+				<!-- a div for the user's password, with cached value pre-loaded if possible -->
 			<div class="password-input">
 				<label for="password" class="label">password</label>
-				<input type="password" name="password" id="password" required value="<?= fetch_cookie(name: 'tmp_password', default: '', unset_value: true) ?>">
+				<input type="password" name="password" id="password" required value="<?= fetch_cookie(name: 'tmp_password', default: '', unset_value: true) ?>" placeholder="<?= get_placeholder_password() ?>">
 			</div>
-
+			
 			<!-- a div for the user to confirm their password incase they made a typo, with cached value pre-loaded if possible -->
 			<div class="password-conf-input">
 				<label for="password-conf" class="label">confirm password</label>
-				<input type="password-conf" name="password-conf" id="password-conf" required value="<?= fetch_cookie(name: 'tmp_password-conf', default: '', unset_value: true) ?>">
+				<input type="password-conf" name="password-conf" id="password-conf" required value="<?= fetch_cookie(name: 'tmp_password-conf', default: '', unset_value: true) ?>" placeholder="<?= get_placeholder_password() ?>">
 			</div>
-
+			
 			<!-- an input for the user to upload a profile picture -->
 			<div class="img-url-input">
-				<label for="img-url">profile picture</label>
+				<label for="img-url" class="label">profile picture</label>
 				<input type="file" name="img-url" id="img-url" value="upload" placeholder="../assets/images/placeholder-profile.jpg">
 			</div>
-
+			
 			
 			<!-- displays an error message if one is applicable -->
 			<?php
 			// checks there is an error message to give
 			if (isset($_COOKIE['tmp_error_message'])): ?>
 				<p class="small-error"><?= fetch_cookie(name: 'tmp_error_message', unset_value: true) ?></p>
-			<?php endif; ?>
-
-			<!-- gives the options to the user to login if they have an account or to register with the information they have supplied above -->
-			<div class="account-options">
-				<input type="submit" value="Register">
-				<div class="secondary-button">
-					<a href="../(login)/">login</a>
+				<?php endif; ?>
+				
+				<!-- gives the options to the user to login if they have an account or to register with the information they have supplied above -->
+				<div class="account-options">
+					<input class="primary button" type="submit" value="Register">
+					<button class="secondary button" onclick="window.location.href = '../(login)/'">login</button>
 				</div>
-			</div>
-		</form>
+			</form>
+		</section>
 	</main>
 
 	<script src="../js/scripts.js"></script>

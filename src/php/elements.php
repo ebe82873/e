@@ -74,14 +74,8 @@ function render_navbar(): string {
 	}
 	// if the user is not logged in then it shows the log in button
 	else {
-		// opens a parent tag to style the login button
-		$navbar_lines[] = "<div class=\"login-button\" onclick=\"window.location.href = '../(login)/'\" title=\"login\">";
-		
-		// a link for the user to login
-		$navbar_lines[] = "<a class=\"login-link\">Login</a>";
-
-		// closes the parent tag
-		$navbar_lines[] = "</div>";
+		// adds a button for the user to login with
+		$navbar_lines[] = "<button class=\"login-button button capitalise\" onclick=\"window.location.href = '../(login)/'\" title=\"login\">login</button>";
 	}
 
 	// closes the parent tag for the nav bar
@@ -126,8 +120,20 @@ function render_header(string $title): string {
  *        <?= render_footer() ?>
  * </body>
  **/
-function render_footer(string $footer): string {
+function render_footer(): string {
 	$footer_lines = [];
 
 	return implode(separator: '\n', array: $footer_lines);
+}
+
+function get_placeholder_email(): string {
+	return 'john.smith@example.com';
+}
+
+function get_placeholder_username(): string {
+	return 'John Smith';
+}
+
+function get_placeholder_password(): string {
+	return 'password 1234';
 }

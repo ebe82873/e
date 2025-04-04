@@ -13,7 +13,7 @@ require_once '../php/requirements.php';
         <section class="create-booking">
             <form action="create_booking.php" class="create-booking" method="post">
                 <!-- a container for the user to enter the options for their booking -->
-                <div class="system">
+                <div class="system input-field">
                     <label class="label" for="solar-panel">solar panel</label>
                     <input type="checkbox" name="solar-panel" id="solar-panel" <?php if (fetch_cookie('tmp_solar-panel', unset_value: true)) { echo 'checked'; } ?>>
 
@@ -25,20 +25,20 @@ require_once '../php/requirements.php';
                 </div>
 
                 <!-- a container for the user to enter a date -->
-                <div class="date">
+                <div class="date input-field">
                     <label class="label" for="date">date</label>
                     <input type="date" name="date" id="date" required value="<?= fetch_cookie('tmp_date', unset_value: true) ?>">
                 </div>
 
                 <!-- a container for the user to enter their email -->
-                <div class="email">
+                <div class="email input-field">
                     <label class="label" for="email">email</label>
                     <!-- pre-loads the email with their won email or has nothing there-->
                     <input type="email" name="email" id="email" value="<?= fetch_cookie(name: 'user', default: ['email' => fetch_cookie('tmp_email') ?? ''])['email'] ?>" required>
                 </div>
 
                 <!-- a container for the user to enter their address -->
-                <div class="address">
+                <div class="address input-field">
                     <label class="label" for="address-lines-1">House name or number</label>
                     <input type="text" id="address-line-1" name="address-line-1" placeholder="64" required value="<?= fetch_cookie('tmp_address-line-1', unset_value: true) ?>">
                     
@@ -59,7 +59,7 @@ require_once '../php/requirements.php';
                     <p class="small-error"><?= $error_message ?></p>
                 <?php endif; ?>
 
-                <input type="submit" class="primary-button" value="Book">
+                <input type="submit" class="primary button" value="Book">
             </form>
         </section>
     </main>

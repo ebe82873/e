@@ -18,15 +18,15 @@ require_once '../php/requirements.php';
 				<div class="email">
 					<label for="email" class="label">email</label>
 					<!-- using cookies to hold the user's email if it is invalid and where sent back from the login -->
-					<input type="email" name="email" placeholder="john.smith@example.com" required value="<?= fetch_cookie(name: 'email', default: '', unset_value: true) ?>">
+					<input type="email" name="email" placeholder="<?= get_placeholder_email(); ?>" required value="<?= fetch_cookie(name: 'email', default: '', unset_value: true) ?>">
 				</div>
 				
 				<!-- password element to hold the user's password input and the toggle password button -->
 				<div class="password">
 					<label for="password" class="label">password</label>
 					<!-- using cookies to store the user's password if they where sent back from the login -->
-					<input id="password-input" type="password" name="password" placeholder="password1234" required minlength="8" value="<?= fetch_cookie(name: 'password', default: '', unset_value: true) ?>">
-					<button type="button" id="toggle-password-button" class="secondary-button">toggle password</button>
+					<input id="password-input" type="password" name="password" placeholder="<?= get_placeholder_password(); ?>" required minlength="8" value="<?= fetch_cookie(name: 'password', default: '', unset_value: true) ?>">
+					<button type="button" id="toggle-password-button" class="secondary button">toggle password</button>
 				</div>
 				
 				<!-- displays an error message -->
@@ -37,11 +37,13 @@ require_once '../php/requirements.php';
 				<?php endif; ?>
 					
 					<div class="account-options">
-						<input type="submit" value="Login" class="primary-button">
-						<button class="secondary-button" onclick="window.location.href = '../(register)/'">register</button>
+						<input type="submit" value="Login" class="primary button">
+						<button class="secondary button" onclick="window.location.href = '../(register)/'">register</button>
 					</div>
 				</form>
 		</section>
 	</main>
+
+	<script src="../js/password_button.js"></script>
 </body>
 </html>

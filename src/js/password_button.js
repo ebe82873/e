@@ -1,19 +1,28 @@
 // a tri way state for the password toggle function 
-enum PasswordStates {
-	toggle,
-	show,
-	hide,
+// using symbols to say that they can not be replicated
+PasswordStates = {
+	toggle: Symbol(),
+	show: Symbol(),
+	hide: Symbol(),
 }
 
 /*
  * a class to manage the state of password viability
  **/
 class PasswordButton {
-	private passwordButton: HTMLButtonElement
-	private passwordVisible: boolean = false
-	private inputElements: Array<HTMLInputElement>;
+	// the button its self
+	passwordButton
+	
+	// the default state of the password viability
+	passwordVisible = false;
 
-	constructor(id: string) {
+	// the password elements
+	inputElements;
+
+	/*
+	 * @param id: string
+	 **/
+	constructor(id) {
 		this.passwordButton = this.getPasswordButton(id);
 
 		this.passwordButton.addEventListener('click', () => {
@@ -27,8 +36,12 @@ class PasswordButton {
 		this.togglePasswords(PasswordStates.hide);
 	}
 
-	private getPasswordButton(id: string): HTMLButtonElement {
-		const passwordButton: HTMLElement | null = document.getElementById('toggle-password-button');
+	/*
+	 * @param id: string
+	 * @return HTMLElement
+	 **/
+	getPasswordButton(id) {
+		const passwordButton = document.getElementById('toggle-password-button');
 
 		console.log(passwordButton);
 		
@@ -43,9 +56,12 @@ class PasswordButton {
 		return passwordButton;
 	}
 
-	private getInputElements(): Array<HTMLInputElement> {
+	/*
+	 * @return Array<HTMLInputElement>
+	 **/
+	getInputElements() {
 		const elements = document.getElementsByTagName('input');
-		let passwordElements: Array<HTMLInputElement> = [];
+		let passwordElements = [];
 
 		for (let i = 0; i < elements.length; i++) {
 			const element = elements[i];
@@ -59,9 +75,10 @@ class PasswordButton {
 	}
 		
 	/*
-		* toggles the viability of all the password elements
-		**/
-	togglePasswords(state: PasswordStates = PasswordStates.toggle): void {
+	 * @param state: PasswordStates
+	 * toggles the viability of all the password elements
+	 **/
+	togglePasswords(state = PasswordStates.toggle) {
 		// sets the state of the of password visibility
 		if (state == PasswordStates.toggle) {
 			this.passwordVisible = !this.passwordVisible
@@ -86,7 +103,7 @@ class PasswordButton {
 	/*
 	 * toggles the visibility of an input element
 	 **/
-	private togglePassword(inputElement: HTMLInputElement) {
+	togglePassword(inputElement) {
 		if (this.passwordVisible) {
 			inputElement.type = 'text'
 		} else {
