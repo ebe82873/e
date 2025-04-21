@@ -18,8 +18,8 @@ function get_rolsa_logo(): ?array {
 }
 
 /*
- * returns an accocitative array with links to the different pages for the nav bar.
- * each key is the name and value if the herf.
+ * returns an associative array with links to the different pages for the nav bar.
+ * each key is the name and value if the href.
  **/
 function get_nav_bar_links(): array {    
 	return [
@@ -48,7 +48,7 @@ function render_navbar(): string {
 	// creates the parent tag for the links
 	$navbar_lines[] = "<ul class=\"links\">";
 
-	// adds each link inturn
+	// adds each link in-turn
 	foreach ( get_nav_bar_links() as $link_name => $path) {
 		$navbar_lines[] = "<a href=\"" . $path . "\" title=\"" . strtolower(string: $link_name) . "\">" . $link_name . "</a>";
 	}
@@ -106,6 +106,9 @@ function render_header(string $title): string {
 
 	// links to the css
 	$header_lines[] = "<link rel=\"stylesheet\" href=\"../css/styles.css\">";
+
+	// links the local css to the page
+	$header_lines[] = "<link rel=\"stylesheet\" href=\"styles.css\">";
 
 	// links the favicon
 	$header_lines[] = "<link rel=\"shortcut icon\" href=\"../assets/images/favicon.svg\" type=\"image/x-icon\">";
