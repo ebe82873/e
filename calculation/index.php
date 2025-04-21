@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php require_once '../php/requirements.php'; ?>
+<?php require_once '../src/php/requirements.php'; ?>
 <html lang="en">
 <head>
     <?= render_header('calculator'); ?>

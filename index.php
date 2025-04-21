@@ -1,4 +1,4 @@
 <?php
 
-// sends user from outside root to root
-header('location: src/');
+// when in root the user is send straight to home
+header("Location: home/");

@@ -1,6 +1,6 @@
 <?php
 
-require_once '../php/requirements.php';
+require_once '../src/php/requirements.php';
 
 function main(): void {
     // checks the user is logged in to able make a booking in their name
@@ -101,7 +101,7 @@ function main(): void {
     $connection->query($query);
 
     // send the user to be able to see their bookings
-    header("location: ../(consultation)/");
+    header("location: ../(consultation");
 }
 
 main();

@@ -1,4 +1,4 @@
 <?php
 
-// when in root the user is send straight to home
-header("Location: (home)/");
+// if user is in this folder than they are redirected out of it
+header('location: ../');

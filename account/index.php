@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require_once '../php/requirements.php';
+require_once '../src/php/requirements.php';
 if (!is_user_logged_in()) {
-	error_and_reroute('please login into an account to view accounts page', '../(login)/');
+	error_and_reroute('please login into an account to view accounts page', '../login/ ');
 }
 $user = fetch_cookie('user');
 ?>

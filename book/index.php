@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require_once '../php/requirements.php';
+require_once '../src/php/requirements.php';
 ?>
 <head>
     <?= render_header(title: 'book consultation') ?>

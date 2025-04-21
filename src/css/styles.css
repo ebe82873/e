@@ -310,3 +310,10 @@ form {
 	padding: calc(var(--size) * 0.01) 0;
 }
 /* #endregion buttons */
+
+/* #region rolsa logo */
+#rolsa-logo {
+	font-size: 3.2rem;
+	color: var(--white);
+	font-family: "Birthstone", cursive;
+}

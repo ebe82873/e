@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php require_once '../php/requirements.php'; ?>
+<?php require_once '../src/php/requirements.php'; ?>
 <html lang="en">
 <head>
     <?= render_header(title: 'Delete booking'); ?>
@@ -9,7 +9,7 @@
 function main(): void {
     // checks the user is logged in before it tries to delete bookings
     if(!is_user_logged_in()) {
-        error_and_reroute(error_message: 'must be logged in to edit consolations', path: '../(login)/');
+        error_and_reroute(error_message: 'must be logged in to edit consolations', path: '../login/ ');
     }
     
     $user = fetch_cookie(name: 'user');

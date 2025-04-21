@@ -1,6 +1,6 @@
 <?php
 
-require_once '../php/requirements.php';
+require_once '../src/php/requirements.php';
 
 function main(): void {
 	// caches the user's inputs
@@ -60,7 +60,7 @@ function main(): void {
 	$connection->query(query: $query);
 
 	// sends the user to go and login to their account
-	header('location: ../(login)/');
+	header('location: ../login/ ');
 }
 
 main();

@@ -3,29 +3,14 @@
 require_once 'requirements.php';
 
 /*
- *    `get_rolsa_logo`
- * returns a an associative array of the logo.
- * ```php
- * <img src="get_rolsa_logo()['src']" alt="get_rolsa_logo()['alt']">#
- * ```
- **/
-function get_rolsa_logo(): ?array {
-	return [
-		'src' => '../assets/images/logo.svg',
-		'alt' => 'Rolsa logo',
-		'title' => 'Rolsa',
-	];
-}
-
-/*
  * returns an associative array with links to the different pages for the nav bar.
  * each key is the name and value if the href.
  **/
 function get_nav_bar_links(): array {    
 	return [
-		'home' => '../(home)/',
-		'consultation' => '../(consultation)/',
-		'calculation' => '../(calculation)/',
+		'home' => '../home/',
+		'consultation' => '../consultation/',
+		'calculation' => '../calculation/',
 	];
 }
 
@@ -43,7 +28,7 @@ function render_navbar(): string {
 	$navbar_lines[] = "<nav class=\"navbar\">";
 
 	// adds the logo element to the tag
-	$navbar_lines[] = "<img class=\"logo\" src=\"" . get_rolsa_logo()['src'] . "\" alt=\"" . get_rolsa_logo()['alt'] . "\" title=\"" . get_rolsa_logo()['title'] ."\" >";
+	$navbar_lines[] = "<span id=\"rolsa-logo\">Rolsa</span>";
 
 	// creates the parent tag for the links
 	$navbar_lines[] = "<ul class=\"links\">";
@@ -61,10 +46,10 @@ function render_navbar(): string {
 	// adds the profile of the user if applicable
 	if ($user != null) {
 		// create the parent link for the user
-		$navbar_lines[] = "<a class=\"account-icon\" href=\"../(account)\" title=\"account settings\">";
+		$navbar_lines[] = "<a class=\"account-icon\" href=\"../account/\" title=\"account settings\">";
 		
 		// makes a link adds the user's profile picture
-		$navbar_lines[] = "<img src=\"" . ($user['img_url'] ?? '../assets/images/placeholder-profile.jpg') . "\" alt=\"profile picture\">";
+		$navbar_lines[] = "<img src=\"" . ($user['img_url'] ?? '../src/assets/images/placeholder-profile.jpg') . "\" alt=\"profile picture\">";
 		
 		// adds their username
 		$navbar_lines[] = "<p class=\"username capitalise\">" . $user['username'] . "</p>";
@@ -75,7 +60,7 @@ function render_navbar(): string {
 	// if the user is not logged in then it shows the log in button
 	else {
 		// adds a button for the user to login with
-		$navbar_lines[] = "<button class=\"login-button button capitalise\" onclick=\"window.location.href = '../(login)/'\" title=\"login\">login</button>";
+		$navbar_lines[] = "<button class=\"login-button button capitalise\" onclick=\"window.location.href = '../login/ '\" title=\"login\">login</button>";
 	}
 
 	// closes the parent tag for the nav bar
@@ -105,13 +90,13 @@ function render_header(string $title): string {
 	$header_lines[] = "<title>" . $title . "</title>";
 
 	// links to the css
-	$header_lines[] = "<link rel=\"stylesheet\" href=\"../css/styles.css\">";
+	$header_lines[] = "<link rel=\"stylesheet\" href=\"../src/css/styles.css\">";
 
 	// links the local css to the page
 	$header_lines[] = "<link rel=\"stylesheet\" href=\"styles.css\">";
 
 	// links the favicon
-	$header_lines[] = "<link rel=\"shortcut icon\" href=\"../assets/images/favicon.svg\" type=\"image/x-icon\">";
+	$header_lines[] = "<link rel=\"shortcut icon\" href=\"../src/assets/images/favicon.svg\" type=\"image/x-icon\">";
 
 	// returns the header lines joined on `\n`
 	return implode(separator:"\n", array: $header_lines);

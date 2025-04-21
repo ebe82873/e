@@ -1,6 +1,6 @@
 <?php
 
-require_once '../php/requirements.php';
+require_once '../src/php/requirements.php';
 
 function main(): void {
         // sets the email and password to temp cookies
@@ -61,6 +61,6 @@ function main(): void {
         set_cookie(name: 'user', value: $user);
 
         // sends the user to home
-        header('location: ../(home)/');
+        header('location: ../home/');
 }
 main();

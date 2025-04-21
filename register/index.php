@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require_once '../php/requirements.php';
+require_once '../src/php/requirements.php';
 ?>
 <head>
 	<?= render_header(title: 'register') ?>
@@ -53,7 +53,7 @@ require_once '../php/requirements.php';
 				<!-- gives the options to the user to login if they have an account or to register with the information they have supplied above -->
 				<div class="account-options">
 					<input class="primary button" type="submit" value="Register">
-					<button class="secondary button" onclick="window.location.href = '../(login)/'">login</button>
+					<button class="secondary button" onclick="window.location.href = '../login/ '">login</button>
 				</div>
 			</form>
 		</section>

@@ -1,6 +1,6 @@
 <?php
 
-require_once '../php/requirements.php';
+require_once '../src/php/requirements.php';
 
 function main(): void {
     // if the user is not logged in then there is no user id
@@ -18,7 +18,7 @@ function main(): void {
     // execs the query
     $connection->query(query: $query);
     
-    header('location: ../(home)/');
+    header('location: ../home/');
 }
 
 main();

@@ -1,6 +1,6 @@
 <?php
 
-require_once '../php/requirements.php';
+require_once '../src/php/requirements.php';
 
 function main(): void {
         // sets temporary cookies to cache the user's inputs
@@ -31,7 +31,7 @@ function main(): void {
 
         // if the user is not logged in then there is no account to update
         if (!is_user_logged_in()) {
-                error_and_reroute('please log in', '../(login)/');
+                error_and_reroute('please log in', '../login/ ');
         }
 
         $connection = get_database_connection();

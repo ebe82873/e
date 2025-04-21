@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require '../php/requirements.php';
+require '../src/php/requirements.php';
 
 // checks the user is logged in
 if (!is_user_logged_in()) {
-    error_and_reroute(error_message: 'please log in to see and make consultations', path: '../(login)/');
+    error_and_reroute(error_message: 'please log in to see and make consultations', path: '../login/ ');
 }
 
 $user = fetch_cookie(name: 'user');
@@ -60,7 +60,7 @@ function get_users_bookings(int $user_id): mixed {
             <?php endif ?>
 
             <!-- makes the book a new button -->
-            <button class="primary button" style="width: 20rem" onclick="window.location.href = '../(book)/';">Book A Consultation</button>
+            <button class="primary button" style="width: 20rem" onclick="window.location.href = '../book/';">Book A Consultation</button>
         </section>
     </main>
 </body>

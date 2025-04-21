@@ -5,12 +5,20 @@ function hash_password($password): string {
 }
 
 function get_database_connection(): mysqli | bool {
-	$ini_data = parse_ini_file(filename: '../php/config.ini');
+	$ini_data = parse_ini_file(filename: 'config.ini');
 	
 	if(!$ini_data) {
-		die('<br>could not read INI file<br>');
+		$ini_data = parse_ini_file(filename: '../php/config.ini');
 	}
 
+	if (!$ini_data) {
+		$ini_data = parse_ini_file(filename: '../src/php/config.ini');
+	}
+
+	if (!$ini_data) {
+		die('<br>could not read INI file<br>');
+	}
+	
 	return mysqli_connect(
 		hostname: $ini_data['hostname'],
 		username: $ini_data['username'],
