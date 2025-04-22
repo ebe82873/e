@@ -11,6 +11,8 @@ require_once '../src/php/requirements.php';
 
     <main class="book">
         <section class="create-booking">
+            <h2 class="capitalise sub-heading">create a booking</h2>
+            
             <form action="create_booking.php" class="create-booking" method="post">
                 <!-- a container for the user to enter the options for their booking -->
                 <div class="system input-field">
@@ -53,12 +55,8 @@ require_once '../src/php/requirements.php';
                 </div>
 
                 <!-- displays an error message is one is applicable -->
-                <?php
-                $error_message = fetch_cookie(name: 'tmp_error_message', unset_value: true);
-                if ($error_message): ?>
-                    <p class="small-error"><?= $error_message ?></p>
-                <?php endif; ?>
-
+                <p class="feedback-text small error"><?= fetch_cookie(name: 'tmp_error_message', unset_value: true) ?? '' ?></p>
+ 
                 <input type="submit" class="primary button" value="Book">
             </form>
         </section>

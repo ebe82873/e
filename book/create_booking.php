@@ -17,6 +17,7 @@ function main(): void {
     $address_line_county = $_POST['address-line-county'];
     $post_code = strtolower($_POST['post-code']);
     
+    // sets the values to true or flase depending if they were providied
     $solar_panel = ['on' => true, 'off' => false][$_POST['solar-panel'] ?? 'off'];
     $ev_charging = ['' => true, 'off' => false][$_POST['ev-charging'] ?? 'off'];
     $smart_home = ['' => true, 'off' => false][$_POST['smart-home'] ?? 'off'];
@@ -37,12 +38,6 @@ function main(): void {
     // if the user has not selected a valid at least one of the checkboxes
     if (!$solar_panel && !$ev_charging && !$smart_home) {
         error_and_reroute('Please select at least one service');
-    }
-    
-    // checks the county is valid
-    // in future to add a better system to catch just the 52 counties
-    if (!preg_match(pattern:'/([A-z]){}/i', subject: $address_line_county) && $address_line_county) {
-        error_and_reroute(error_message: 'invalid county name');
     }
 
     // regex from gov.uk post codes
@@ -101,7 +96,7 @@ function main(): void {
     $connection->query($query);
 
     // send the user to be able to see their bookings
-    header("location: ../(consultation");
+    header("location: ../consultation");
 }
 
 main();

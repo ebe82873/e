@@ -18,6 +18,7 @@ require_once '../src/php/requirements.php';
 		</section>
 
 		<section class="news">
+			<h2 class="capitalise sub-heading" style="color: black">News</h2>
 			<!--
 				* placeholder text and items
 				* add more in future development

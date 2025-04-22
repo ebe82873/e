@@ -50,7 +50,7 @@ main.home section.news article.article {
 	
 	border-radius: calc(var(--spacer) *  0.625);
 
-	max-width: 60%;
+	max-width: 60vw	;
 
 	padding: calc(var(--spacer) *  0.391);
 

@@ -11,6 +11,8 @@ require_once '../src/php/requirements.php';
 
 	<main class="register">
 		<section class="register">
+			<h2 class="capitalise sub-heading">Register</h2>
+
 			<form action="register.php" class="register-form" method="post">
 				<!-- a div for the user's email, with cached value pre-loaded if possible -->
 				<div class="email-input">
@@ -59,6 +61,6 @@ require_once '../src/php/requirements.php';
 		</section>
 	</main>
 
-	<script src="../js/scripts.js"></script>
+	<script src="../src/js/scripts.js"></script>
 </body>
 </html>

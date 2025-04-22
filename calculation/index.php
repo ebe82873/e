@@ -24,10 +24,11 @@
 
     <main class="calculation">
         <section class="calculation">
+            <h2 class="capitalise sub-heading">calculator</h2>
             <!-- this where the calculator sits -->
         </section>
     </main>
 
-    <script src="../js/calculator.js"></script>
+    <script src="../src/js/calculator.js"></script>
 </body>
 </html>

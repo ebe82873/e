@@ -60,7 +60,7 @@ function render_navbar(): string {
 	// if the user is not logged in then it shows the log in button
 	else {
 		// adds a button for the user to login with
-		$navbar_lines[] = "<button class=\"login-button button capitalise\" onclick=\"window.location.href = '../login/ '\" title=\"login\">login</button>";
+		$navbar_lines[] = "<a class=\"login-button button capitalise\" href=\"../login/\" title=\"login\">login</a>";
 	}
 
 	// closes the parent tag for the nav bar
@@ -111,7 +111,15 @@ function render_header(string $title): string {
 function render_footer(): string {
 	$footer_lines = [];
 
-	return implode(separator: '\n', array: $footer_lines);
+	// opens the footer tag
+	$footer_lines[] = "<footer class=\"footer\">";
+
+	$footer_lines[] = "<";
+	
+	// closes the footer tag
+	$footer_lines[] = "</footer>";
+
+	return implode(separator: "\n", array: $footer_lines);
 }
 
 function get_placeholder_email(): string {

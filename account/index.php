@@ -15,7 +15,8 @@ $user = fetch_cookie('user');
 
 	<main class="account">
 		<section class="update-account">
-			
+			<h2 class="capitalise sub-heading">Account</h2>
+
 			<form action="update_account_info.php" class="account-form" method="post">
 				<div class="email-input">
 					<!-- displays an email input with a cached value pre-loaded if available -->
@@ -53,19 +54,19 @@ $user = fetch_cookie('user');
 				<?php
 				// checks there is an error message to give
 				if (isset($_COOKIE['tmp_error_message'])): ?>
-					<p class="small-error"><?= fetch_cookie(name: 'tmp_error_message', unset_value: true) ?></p>
+					<p class="feedback-text small error"><?= fetch_cookie(name: 'tmp_error_message', unset_value: true) ?></p>
 				<?php endif; ?>
 				
 				<!-- account options -->
 				<div class="account-options">
 					<input class="primary button" type="submit" value="Update">
-					<button class="secondary button" onclick="window.location.href = 'logout.php';">logout</button>
+					<button type="button" class="secondary button" onclick="window.location.href = 'logout.php';">logout</button>
 					<button type="button" class="delete button" onclick="window.location.href = 'delete_account.php';">Delete account</button>
 				</div>
 			</form>
 		</section>
 	</main>
 
-	<script src="../js/password_button.js"></script>
+	<script src="../src/js/password_button.js"></script>
 </body>
 </html>

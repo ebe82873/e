@@ -1,4 +1,0 @@
-node_modules/*
-.*
-# this it to hide the details to log into the database if using git
-config.ini

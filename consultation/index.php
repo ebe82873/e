@@ -28,6 +28,8 @@ function get_users_bookings(int $user_id): mixed {
     <?= render_navbar() ?>
 
     <main class="consolations">
+        <h2 class="capitalise sub-heading">consolations</h2>
+        
         <section class="bookings">
             <?php
             $bookings = get_users_bookings(user_id: $user['id']);

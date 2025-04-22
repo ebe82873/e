@@ -66,12 +66,15 @@ border: red solid 1px;
 * {
 	outline: none;
 	animation: phase-in 0.5s ease-out;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* basic style on body */
 body {
 	margin: 0;
 	padding: 0;
+
+	min-height: 100dvh;
 
 	height: fit-content;
 
@@ -224,6 +227,23 @@ form {
 }
 /* #endregion navbar */
 
+/* #regoin footer */
+.footer {
+	clip-path: polygon(
+		34% 42%,
+		56% 29%,
+		78% 34%,
+		100% 0,
+		100% 100%,
+		0 100%,
+		0 50%,
+		13% 36%
+	);
+
+	border-color: var(--secondary);
+}
+/* #endregion footer */
+
 /* #region classes */
 .popup {
 	position: fixed;
@@ -255,6 +275,12 @@ form {
 .capitalise::first-letter {
 	text-transform: uppercase;
 }
+
+.sub-heading {
+	font-size: 1.6rem;
+	text-decoration: underline;
+	font-weight: bold;
+} 
 /* #endregion classes */
 
 /* #region buttons */
@@ -317,3 +343,4 @@ form {
 	color: var(--white);
 	font-family: "Birthstone", cursive;
 }
+/* #endregion rolsa logo */
