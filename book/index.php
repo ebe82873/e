@@ -61,5 +61,6 @@ require_once '../src/php/requirements.php';
             </form>
         </section>
     </main>
+    <?= render_footer() ?>
 </body>
 </html>

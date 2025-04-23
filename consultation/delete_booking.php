@@ -65,5 +65,6 @@ main();
 		<button type="button" onclick="window.location.href = 'delete_booking.php?id=<?= $_GET['id'] ?>&conf=1';" class="delete button">delete</button>
 		<button type="button" onclick="window.location.href = './';" class="secondary button">cancel</button>
 	</main>
+    <?= render_footer() ?>
 </body>
 </html>

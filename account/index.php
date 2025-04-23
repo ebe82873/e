@@ -66,6 +66,7 @@ $user = fetch_cookie('user');
 			</form>
 		</section>
 	</main>
+    <?= render_footer() ?>
 
 	<script src="../src/js/password_button.js"></script>
 </body>

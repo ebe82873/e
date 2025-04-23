@@ -65,5 +65,6 @@ function get_users_bookings(int $user_id): mixed {
             <button class="primary button" style="width: 20rem" onclick="window.location.href = '../book/';">Book A Consultation</button>
         </section>
     </main>
+    <?= render_footer() ?>
 </body>
 </html> 

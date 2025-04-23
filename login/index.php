@@ -32,7 +32,7 @@ require_once '../src/php/requirements.php';
 				</div>
 				
 				<!-- displays an error message -->
-				<p class="small-error"><?= fetch_cookie(name: 'tmp_error_message', unset_value: true) ?? '' ?></p>
+				<p class="feedback-text small error"><?= fetch_cookie(name: 'tmp_error_message', unset_value: true) ?? '' ?></p>
 				
 				<div class="account-options">
 					<input type="submit" value="Login" class="primary button">
@@ -41,6 +41,7 @@ require_once '../src/php/requirements.php';
 			</form>
 		</section>
 	</main>
+    <?= render_footer() ?>
 
 	<script src="../src/js/password_button.js"></script>
 </body>

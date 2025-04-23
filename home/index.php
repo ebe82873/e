@@ -85,5 +85,6 @@ require_once '../src/php/requirements.php';
 			</article>
 		</section>  
 	</main>
+    <?= render_footer() ?>
 </body>
 </html>

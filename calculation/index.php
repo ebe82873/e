@@ -28,6 +28,7 @@
             <!-- this where the calculator sits -->
         </section>
     </main>
+    <?= render_footer() ?>
 
     <script src="../src/js/calculator.js"></script>
 </body>

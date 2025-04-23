@@ -48,5 +48,6 @@ main();
 			<button type="button" class="secondary button" onclick="window.location.href = './';">cancel</button>
 		</section>
 	</main>
+    <?= render_footer() ?>
 </body>
 </html>

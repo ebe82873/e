@@ -49,7 +49,7 @@ require_once '../src/php/requirements.php';
 			<?php
 			// checks there is an error message to give
 			if (isset($_COOKIE['tmp_error_message'])): ?>
-				<p class="small-error"><?= fetch_cookie(name: 'tmp_error_message', unset_value: true) ?></p>
+				<p class="feedback-text small error"><?= fetch_cookie(name: 'tmp_error_message', unset_value: true) ?></p>
 				<?php endif; ?>
 				
 				<!-- gives the options to the user to login if they have an account or to register with the information they have supplied above -->
@@ -60,6 +60,7 @@ require_once '../src/php/requirements.php';
 			</form>
 		</section>
 	</main>
+    <?= render_footer() ?>
 
 	<script src="../src/js/scripts.js"></script>
 </body>

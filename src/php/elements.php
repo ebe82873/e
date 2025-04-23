@@ -114,7 +114,15 @@ function render_footer(): string {
 	// opens the footer tag
 	$footer_lines[] = "<footer class=\"footer\">";
 
-	$footer_lines[] = "<";
+	$footer_lines[] = "
+		<address>
+            236
+            Norwich
+            NR2 4QT
+        </address>
+        <span class=\"copy\">rolsa &copy; 2025</span>
+        <a href=\"../legal\">Terms and Conditions</a>
+	";
 	
 	// closes the footer tag
 	$footer_lines[] = "</footer>";
