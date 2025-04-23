@@ -37,7 +37,7 @@ $user = fetch_cookie('user');
 				</div>
 				
 				<div class="password-conf-input">
-					<!-- takes the user confirmation for their email incase they have a typo in their password -->
+					<!-- takes the user confirmation for their email in case they have a typo in their password -->
 					<label for="password-conf" class="label">confirm password</label>
 					<input type="password" name="password-conf" id="password-conf" required value="<?= fetch_cookie(name: 'tmp_password_conf', unset_value: true) ?? $user['password'] ?>">
 				</div>

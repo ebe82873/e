@@ -39,8 +39,12 @@ border: red solid 1px;
 
 /* #region feedback text */
 .feedback-text {
-	text-transform: capitalize;
+	text-transform: lowercase;
 	font-family: monospace;
+}
+/* capitalises the sentence */
+.feedback-text::first-letter {
+	text-transform: uppercase;
 }
 .feedback-text.large {
 	font-size: 4.096rem;
@@ -240,6 +244,12 @@ img {
 .navbar .account-icon .username {
 	color: var(--white);
 }
+/* turns it grey in light mode when hovered over */
+.navbar .links a img:hover,
+.navbar .links a img:focus-within,
+.navbar .links a img:active {
+	filter: invert() brightness(50%);
+}
 
 @media only screen and (max-width: 770px) {
 	.navbar * {
@@ -250,6 +260,12 @@ img {
 @media (prefers-color-scheme: dark) {
 	.navbar .links a img {
 		filter: none;
+	}
+	/* turns it white in dark mode when hovered over */
+	.navbar .links a img:hover,
+	.navbar .links a img:focus-within,
+	.navbar .links a img:active {
+		filter: invert();
 	}
 }
 /* #endregion navbar */

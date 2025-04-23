@@ -42,7 +42,8 @@ main();
 	
 	<main class="account">
 		<section class="delete-account">
-			<h2 class="sub-heading">Delete your account?:</h2>
+			<h2 class="title">Deleting your account?</h2>
+			<p class="sub-text">This is a permanent, your account can not be recovered</p>
 		
 			<button href="delete_account.php" class="delete button" onclick="window.location.href = 'delete_account.php?conf=1';">delete</button>
 			<button type="button" class="secondary button" onclick="window.location.href = './';">cancel</button>

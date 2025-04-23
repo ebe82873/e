@@ -5,7 +5,7 @@ require_once '../src/php/requirements.php';
 function main(): void {
     // checks the user is logged in to able make a booking in their name
     if (!is_user_logged_in()) {
-        error_and_reroute(error_message: 'please log in to be able to create bookings', path: '../(login)');
+        error_and_reroute(error_message: 'please log in to be able to create bookings', path: '../login');
     }
     
     // gets all of the users inputs
@@ -17,7 +17,7 @@ function main(): void {
     $address_line_county = $_POST['address-line-county'];
     $post_code = strtolower($_POST['post-code']);
     
-    // sets the values to true or flase depending if they were providied
+    // sets the values to true or false depending if they were provided
     $solar_panel = ['on' => true, 'off' => false][$_POST['solar-panel'] ?? 'off'];
     $ev_charging = ['' => true, 'off' => false][$_POST['ev-charging'] ?? 'off'];
     $smart_home = ['' => true, 'off' => false][$_POST['smart-home'] ?? 'off'];
