@@ -73,7 +73,7 @@ main.delete-booking .sub-text {
 		font-size: calc(var(--text-size) *  1.0 );
 }
 main.delete-booking button {
-	width: calc(var(--text-size) *  1.0  * 15);
-	height: calc(var(--text-size) *  1.0 );
-	font-weight: calc(var(--text-size) *  1.0 );
+	width: calc(var(--text-size) * 15);
+	height: var(--text-size);
+	font-weight: var(--text-size);
 }

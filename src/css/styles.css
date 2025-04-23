@@ -2,11 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Birthstone&display=swap');
 
 :root {
+	color-scheme: light dark;
 	--primary: #60b450;
 	--secondary: #33642b;
 	--tertiary: #427676;
-	--white: #ecf1ed;
-	--black: #140300;
+	--white: light-dark(#ecf1ed, #181818);
+	--black: light-dark(#140300, #aab);
 }
 
 /* #region debugging */
@@ -131,6 +132,10 @@ form {
 		}
 	}
 }
+
+img {
+	width: 5rem;
+}
 /* #endregion */
 
 /* #region navbar */
@@ -239,6 +244,12 @@ form {
 @media only screen and (max-width: 770px) {
 	.navbar * {
 		flex-direction: column;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.navbar .links a img {
+		filter: none;
 	}
 }
 /* #endregion navbar */

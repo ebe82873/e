@@ -92,7 +92,7 @@ class CalculatorBody {
                 let button = document.createElement('button');
                 button.type = 'button';
                 button.innerText = answer;
-                button.className = 'answer button';
+                button.className = 'secondary button';
                 button.addEventListener('click', () => {
                     resolve(value);
                 })
@@ -142,8 +142,7 @@ class CalculatorBody {
 
         const averageScore = document.createElement('div');
         averageScore.classList.add('result');
-        console.log(document.cookie);
-        averageScore.innerHTML = `<p>Average carbon footprint is:</p><p class="score">${averageCarbonFootprint}`
+        averageScore.innerHTML = `<p>Average carbon footprint is:</p><p class="score">${averageCarbonFootprint}</p>`
         this.body.appendChild(averageScore);
 
         const buttonsContainer = document.createElement('div');
@@ -154,6 +153,7 @@ class CalculatorBody {
         reCalcButton.type = 'button';
         reCalcButton.className = 'secondary button';
         reCalcButton.addEventListener('click', () => {
+            // reloads the page to reset the calculator
             window.location.href = './';
         })
         reCalcButton.innerText = 'Re-calculate'

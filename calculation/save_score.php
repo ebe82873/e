@@ -18,7 +18,7 @@ function main(): void {
     // execs the query
     $connection->query(query: $query);
     
-    header('location: ../home/');
+    header('location: ../consultation/');
 }
 
 main();

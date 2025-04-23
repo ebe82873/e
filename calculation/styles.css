@@ -72,12 +72,7 @@ main.calculation .calculation .calculator .answers {
 
 	align-items: center;
 }
-main.calculation .calculation .calculator .answers .answer {
-	--size: 10rem;
-	--colour: var(--black);
-	--background-colour: var(--primary);
-
-	border-color: var(--primary);
+main.calculation .calculation .calculator .answers .button {
 	margin: 1rem;
 }
 main.calculation .calculation .calculator .result {

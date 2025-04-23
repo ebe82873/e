@@ -31,8 +31,6 @@ class PasswordButton {
 
 		this.inputElements = this.getInputElements();
 
-		console.info(this.inputElements);
-
 		this.togglePasswords(PasswordStates.hide);
 	}
 
@@ -43,8 +41,6 @@ class PasswordButton {
 	getPasswordButton(id) {
 		const passwordButton = document.getElementById('toggle-password-button');
 
-		console.log(passwordButton);
-		
 		if (!passwordButton) {
 			throw new Error(`${id} Not an element`);
 		}
