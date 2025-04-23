@@ -49,7 +49,6 @@ main.consolations .bookings .booking .date::before {
 	margin-right: 1rem;
 }
 
-
 main.delete-booking {
 	--text-size: 3rem;
 

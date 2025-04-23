@@ -61,7 +61,7 @@ main();
 	
 	<main class="delete-booking">
 		<h2 class="title capitalise" style="color: black">delete booking?</h2>
-		<p class="sub-text" style="color: black">deleting a booking is perminant</p>
+		<p class="sub-text" style="color: black">deleting a booking is permanent</p>
 		<button type="button" onclick="window.location.href = 'delete_booking.php?id=<?= $_GET['id'] ?>&conf=1';" class="delete button">delete</button>
 		<button type="button" onclick="window.location.href = './';" class="secondary button">cancel</button>
 	</main>

@@ -1,4 +1,5 @@
 main.book .create-booking .create-booking .input-field {
+	overflow: visible;
 	display: flex;
 	flex-direction: column;
 

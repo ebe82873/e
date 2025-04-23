@@ -8,6 +8,13 @@ main.account .update-account .account-form .account-options {
 	--position-value: calc(var(--element-width) * 0.2);
 	right: var(--position-value);
 	bottom: var(--position-value);
+
+	z-index: 1;
+	padding: 1%;
+
+	border-radius: 5%;
+
+	background-color: var(--white);
 }
 
 /* styles for delete account subpage */

@@ -180,7 +180,7 @@ class Calculator {
             question: 'what type of car do you drive?',
             answers: {
                 'small petrol car': 1.2,
-                '   petrol car': 1.4,
+                'petrol car': 1.4,
                 'diesel': 1.8,
                 'electric': 0.3,
                 'hydrogen': 0.2,
@@ -190,14 +190,69 @@ class Calculator {
         {
             question: 'how often do you eat meat?',
             answers: {
-                'once a meal': 2.6,
-                'once a day': 2.1,
-                'once every few days': 1.5,
-                'once a week': 1.1,
+                'every a meal': 2.6,
+                'every a day': 2.1,
+                'every every few days': 1.5,
+                'every a week': 1.1,
                 'less then once a week': 0.3,
                 'N/A': 0,
             }
         },
+        {
+            question: "how often do you fly for travel?",
+            answers: {
+                "multiple times a month": 3.0,
+                "once a month": 2.5,
+                "few times a year": 1.5,
+                "once a year": 1.0,
+                "rarely or never": 0.5,
+                "N/A": 0
+            }
+        },
+        {
+            question: "how do you usually heat your home?",
+            answers: {
+                "gas heating": 2.3,
+                "electric heating": 2.0,
+                "wood burning stove": 1.5,
+                "heat pump": 0.5,
+                "solar power": 0.1,
+                "N/A": 0
+            }
+        },
+        {
+            question: "how often do you use public transport?",
+            answers: {
+                "daily": 0.9,
+                "few times a week": 0.7,
+                "few times a month": 0.5,
+                "rarely": 0.3,
+                "never": 0.1,
+                "N/A": 0
+            }
+        },
+        {
+            question: "how much of your electricity comes from renewable sources?",
+            answers: {
+                "100% renewable": 0.2,
+                "50-99% renewable": 0.5,
+                "less than 50% renewable": 1.0,
+                "none": 1.5,
+                "N/A": 0
+            }
+        },
+        {
+            question: "how much do you recycle?",
+            answers: {
+                "always": 0.2,
+                "mostly": 0.5,
+                "sometimes": 1.0,
+                "rarely": 1.5,
+                "never": 2.0,
+                "N/A": 0
+            }
+        }
+        
     ];
     body; 
     total;

@@ -56,7 +56,7 @@ function get_users_bookings(int $user_id): mixed {
                         <p class="location"><?= $booking['address'] ?></p>
 
                         <!-- makes a delete button for the booking specific to the booking -->
-                        <button class="delete button" onclick="window.location.href = 'delete_booking.php?id=<?= $booking['ID'] ?>';">Delete</button>
+                        <button class="delete button" onclick="window.location.href = 'delete_booking.php?id=<?= $booking['ID'] ?>';"><img src="../src/assets/icons/delete.svg" alt="delete booking" title="delete booking"></button>
                     </div> 
                 <?php endforeach; ?>
             <?php endif ?>

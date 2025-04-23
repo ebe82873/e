@@ -35,9 +35,11 @@ require_once '../src/php/requirements.php';
 			<!-- a div for the user to confirm their password incase they made a typo, with cached value pre-loaded if possible -->
 			<div class="password-conf-input">
 				<label for="password-conf" class="label">confirm password</label>
-				<input type="password-conf" name="password-conf" id="password-conf" required value="<?= fetch_cookie(name: 'tmp_password-conf', default: '', unset_value: true) ?>" placeholder="<?= get_placeholder_password() ?>">
+				<input type="password" name="password-conf" id="password-conf" required value="<?= fetch_cookie(name: 'tmp_password-conf', default: '', unset_value: true) ?>" placeholder="<?= get_placeholder_password() ?>">
 			</div>
-			
+
+			<button type="button" id="toggle-password-button" class="secondary button">toggle password</button>
+
 			<!-- an input for the user to upload a profile picture -->
 			<div class="img-url-input">
 				<label for="img-url" class="label">profile picture</label>
@@ -62,6 +64,6 @@ require_once '../src/php/requirements.php';
 	</main>
     <?= render_footer() ?>
 
-	<script src="../src/js/scripts.js"></script>
+	<script src="../src/js/password_button.js"></script>
 </body>
 </html>

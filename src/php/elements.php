@@ -8,9 +8,21 @@ require_once 'requirements.php';
  **/
 function get_nav_bar_links(): array {    
 	return [
-		'home' => '../home/',
-		'consultation' => '../consultation/',
-		'calculation' => '../calculation/',
+		'home' => [
+			'name' => 'home',
+			'href' => '../home/',
+			'src' => '../src/assets/icons/home.svg'
+		],
+		'consultation' => [
+			'name' => 'consultation',
+			'href' => '../consultation/',
+			'src' => '../src/assets/icons/consultation.svg'
+		],
+		'calculation' => [
+			'name' => 'calculation',
+			'href' => '../calculation/',
+			'src' => '../src/assets/icons/calc.svg'
+		],
 	];
 }
 
@@ -28,14 +40,14 @@ function render_navbar(): string {
 	$navbar_lines[] = "<nav class=\"navbar\">";
 
 	// adds the logo element to the tag
-	$navbar_lines[] = "<span id=\"rolsa-logo\">Rolsa</span>";
+	$navbar_lines[] = "<span class=\"rolsa-logo\">Rolsa</span>";
 
 	// creates the parent tag for the links
 	$navbar_lines[] = "<ul class=\"links\">";
 
 	// adds each link in-turn
-	foreach ( get_nav_bar_links() as $link_name => $path) {
-		$navbar_lines[] = "<a href=\"" . $path . "\" title=\"" . strtolower(string: $link_name) . "\">" . $link_name . "</a>";
+	foreach ( get_nav_bar_links() as $link_name => $info) {
+		$navbar_lines[] = "<a href=\"" . $info['href'] . "\" title=\"" . strtolower(string: $info['name']) . "\">" . "<img src=\"" . $info['src'] . "\">" . "</a>";
 	}
 	
 	// closes the links tag
@@ -114,15 +126,40 @@ function render_footer(): string {
 	// opens the footer tag
 	$footer_lines[] = "<footer class=\"footer\">";
 
-	$footer_lines[] = "
-		<address>
-            236
-            Norwich
-            NR2 4QT
-        </address>
-        <span class=\"copy\">rolsa &copy; 2025</span>
-        <a href=\"../legal\">Terms and Conditions</a>
-	";
+	$footer_lines[] = "<div class=\"left\">";
+
+	$footer_lines[] = "<div class=\"contact-info\">";
+	
+	// replace for actual email and phone number
+	$footer_lines[] = "<a href=\"tel:01248 567800\" class=\"telephone\">01248 567800</a>";
+	$footer_lines[] = "<a href=\"mailto:info@rolsa.co.uk\" class=\"email\">info@rolsa.co.uk</a>";
+
+	$footer_lines[] = "</div>";
+
+	$footer_lines[] = "<address class=\"address\">";
+
+	// put actual address here
+	// in the meantime use this temporary address
+	$footer_lines[] = "<span class=\"address-line\">142</span>";
+	$footer_lines[] = "<span class=\"address-line\">Duke Street</span>";
+	$footer_lines[] = "<span class=\"address-line\">Norwich</span>";
+	$footer_lines[] = "<span class=\"address-line\">NR3 1DL</span>";
+
+	$footer_lines[] = "</address>";
+
+	$footer_lines[] = "</div>";
+
+	$footer_lines[] = "<div class=\"right\">";
+
+	$footer_lines[] = "<h2 class=\"rolsa-logo\">ROLSA</h2>";
+
+	$footer_lines[] = "<span class=\"copyright\">ROLSA&copy;2025</span>";
+
+	$footer_lines[] = "<div id=\"accessibility-buttons-container\"></div>";
+
+	$footer_lines[] = "</div>";
+
+	$footer_lines[] = "<script src=\"../src/js/accessibility_buttons.js\"></script>";
 	
 	// closes the footer tag
 	$footer_lines[] = "</footer>";
